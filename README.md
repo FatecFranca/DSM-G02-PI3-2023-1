@@ -3,7 +3,7 @@
 Repositório do GRUPO 2 - Projeto Interdisciplinar 3, 3º DSM Fatec Franca 2023/ 1. Alunos: Breno Tanaka, Daniel José Martins Júnior, Gabriel Ferreira Carrijo, Juliano Cintra Alves de Almeida.
 
 #
-# PI 3 Semestre
+# PI 3 Semestre : Posto Shiny
 
 <h3>Para nossa organização do grupo, teremos back e front, peço para gerarem branch antes de subir realmente para o projeto principal, todos nós do grupo devemos avaliar as alterações para que assim seja colocada na main(Projeto Principal)</h3>
 
