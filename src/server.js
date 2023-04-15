@@ -1,7 +1,8 @@
 // Nota: Para iniciar o servidor: abrir a pasta src no terminal e rodar o comando npm run dev
 
 const express = require('express') // O express permite que não seja necessário reiniciar a aplicação à cada alteração feita
-const app = express()
+const app = express();
+const cors = require('cors');   // O cors serve para que seja feita a vinculação com o front
 const mongoose = require('mongoose') // O mongoose é usado para fazer a conexão no banco de dados
 const Usuario = require('./models/usuario')
 
@@ -25,6 +26,10 @@ app.use(express.json())
 app.set('view engine', 'hbs')
 app.set("views", templatePath)
 app.use(express.urlencoded({extended:false}))
+app.use(cors({
+    credentials: true,          //access-control-allow-credentials:true
+    optionSuccessStatus: 200
+}));
 
 //rotas
 app.get('/', (req, res) => {
