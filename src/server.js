@@ -5,6 +5,7 @@ const app = express();
 const cors = require('cors');   // O cors serve para que seja feita a vinculação com o front
 const mongoose = require('mongoose') // O mongoose é usado para fazer a conexão no banco de dados
 const Usuario = require('./models/usuario')
+const TiposUsr = require('./models/tipos_usuarios')
 
 const path = require('path')
 const hbs = require('hbs')
@@ -92,7 +93,7 @@ app.get('/usuario', async(req, res) => {
     }
 })
 
-// busca apenas um
+// busca por id
 app.get('/usuario/:id', async(req, res) => {
     try {
         const {id} = req.params
@@ -103,7 +104,7 @@ app.get('/usuario/:id', async(req, res) => {
     }
 })
 
-// update
+// atualiza por id
 app.put('/usuario/:id', async(req, res) => {
     try {
         const {id} = req.params
@@ -123,7 +124,7 @@ app.put('/usuario/:id', async(req, res) => {
     }
 })
 
-// delete
+// delete por id
 app.delete('/usuario/:id', async(req, res) => {
     try {
         const {id} = req.params
@@ -136,6 +137,80 @@ app.delete('/usuario/:id', async(req, res) => {
         
         // se encontrou
         res.status(200).json(usuario)
+
+    } catch (error) {
+        res.status(500).json({message: error.message})
+    }
+})
+
+// crud tipos de usuários
+// salva
+app.post('/tipousr', async(req, res) => {
+    try{
+        const tipousr = await TiposUsr.create(req.body)
+        res.status(200).json(tipousr)
+    } catch (error){
+        console.log(error.message)
+        res.status(500).json({message: error.message})
+    }
+})
+
+// busca todos
+app.get('/tipousr', async(req, res) => {
+    try{
+        const tipousr = await TiposUsr.find({})
+        res.status(200).json(tipousr)
+    } catch (error){
+        console.log(error.message)
+        res.status(500).json({message: error.message})
+    }
+})
+
+// busca por id
+app.get('/tipousr/:id', async(req, res) => {
+    try{
+        const {id} = req.params
+        const tipousr = await TiposUsr.findById(id)
+        res.status(200).json(tipousr)
+    } catch (error){
+        console.log(error.message)
+        res.status(500).json({message: error.message})
+    }
+})
+
+// atualiza por id
+app.put('/tipousr/:id', async(req, res) => {
+    try{
+        const {id} = req.params
+        const tipousr = await TiposUsr.findByIdAndUpdate(id, req.body)
+
+        // se não encontrou um id correspondente
+        if(!tipousr){
+            return res.status(404).json({message: `Tipo não encontrado`})
+        }
+
+        // se encontrou
+        const tipoAtualizado = await TiposUsr.findById(id)
+        res.status(200).json(tipoAtualizado)
+
+    } catch (error) {
+        res.status(500).json({message: error.message})
+    }
+})
+
+// delete por id
+app.delete('/tipousr/:id', async(req, res) => {
+    try {
+        const {id} = req.params
+        const tipousr = await TiposUsr.findByIdAndDelete(id)
+
+        // se não encontrou um id correspondente
+        if(!tipousr){
+            return res.status(404).json({message: `Tipo não encontrado`})
+        }
+
+        // se encontrou
+        res.status(200).json(tipousr)
 
     } catch (error) {
         res.status(500).json({message: error.message})
