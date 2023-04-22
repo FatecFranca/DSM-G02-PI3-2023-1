@@ -6,13 +6,14 @@ const usuarioSchema = mongoose.Schema(
             type: String,
             required: [true, "Informe um nome"]
         },
-        sobrenome: {
+        cpf: {
             type: String,
-            required: [false]
+            required: [true]
         },
         email: {
             type: String, 
-            required: [true, "Informe um email"]
+            required: [true, "Informe um email"],
+            unique: true
         },
         senha: {
             type: String,

@@ -6,6 +6,7 @@ const cors = require('cors');   // O cors serve para que seja feita a vinculaç�
 const mongoose = require('mongoose') // O mongoose é usado para fazer a conexão no banco de dados
 const Usuario = require('./models/usuario')
 const TiposUsr = require('./models/tipos_usuarios')
+const jwt = require('jsonwebtoken')
 
 const path = require('path')
 const hbs = require('hbs')
@@ -42,17 +43,35 @@ app.get('/cadastro', (req, res) => {
         res.render('cadastro')
     })
 
-// login
-app.post("/login", async(req,res) => {
-    try{
-        const check = await collection.findOne({nome:req.body.nome})
 
-        if(check.senha===req.body.senha){
+function generateToken(userId) {
+  const token = jwt.sign({ userId }, 'segredo', { expiresIn: '1d' })
+  return token
+}
+
+// login
+app.post("/login", async (req, res) => {
+    try {
+        const check = await collection.findOne({ email: req.body.email })
+
+        if (check.senha === req.body.senha) {
+            // Gera um token de autenticação
+            const token = generateToken(check._id)
+
+            // Armazena o token em um cookie
+            res.cookie("authToken", token, { httpOnly: true })
+
+            // Armazena o token no banco de dados do usuário
+            await collection.updateOne(
+                { _id: check._id },
+                { $set: { authToken: token } }
+            )
+
             res.render('home')
-        }else{
+        } else {
             res.send('Senha Incorreta')
         }
-    } catch(error){
+    } catch (error) {
         res.send('Login inválido')
     }
 })
@@ -73,15 +92,19 @@ app.post('/cadastro', async(req, res) => {
 
 // crud usuário
 // salva
-app.post('/usuario', async(req, res) => {
+app.post('/usuario', async (req, res) => {
     try {
-        const usuario = await Usuario.create(req.body)
-        res.status(200).json(usuario)
-    } catch (error){
-        console.log(error.message)
-        res.status(500).json({message: error.message})
+        const usuarioExistente = await Usuario.findOne({ email: req.body.email });
+        if (usuarioExistente) {
+            return res.status(400).json({ message: 'Já existe um usuário com esse email' });
+        }
+        const usuario = await Usuario.create(req.body);
+        res.status(200).json(usuario);
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).json({ message: error.message });
     }
-})
+});
 
 // busca todos
 app.get('/usuario', async(req, res) => {
