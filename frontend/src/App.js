@@ -1,10 +1,9 @@
+import GlobalStyle from "./styles/GlobalStyles";
 
 
 function App() {
   return (
-    <div>
-      WIP
-    </div>
+    <GlobalStyle />
   );
 }
 
