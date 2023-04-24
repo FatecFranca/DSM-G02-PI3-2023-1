@@ -5,7 +5,6 @@ const app = express();
 const cors = require('cors');   // O cors serve para que seja feita a vinculação com o front
 const mongoose = require('mongoose') // O mongoose é usado para fazer a conexão no banco de dados
 const Usuario = require('./models/usuario')
-const TiposUsr = require('./models/tipos_usuarios')
 const jwt = require('jsonwebtoken')
 
 const path = require('path')
@@ -41,6 +40,10 @@ app.get('/', (req, res) => {
 
 app.get('/cadastro', (req, res) => {
         res.render('cadastro')
+    })
+
+app.get('/adicionar-pontos', (req, res) => {
+        res.render('pontos')
     })
 
 
@@ -166,76 +169,28 @@ app.delete('/usuario/:id', async(req, res) => {
     }
 })
 
-// crud tipos de usuários
-// salva
-app.post('/tipousr', async(req, res) => {
-    try{
-        const tipousr = await TiposUsr.create(req.body)
-        res.status(200).json(tipousr)
-    } catch (error){
-        console.log(error.message)
-        res.status(500).json({message: error.message})
-    }
-})
-
-// busca todos
-app.get('/tipousr', async(req, res) => {
-    try{
-        const tipousr = await TiposUsr.find({})
-        res.status(200).json(tipousr)
-    } catch (error){
-        console.log(error.message)
-        res.status(500).json({message: error.message})
-    }
-})
-
-// busca por id
-app.get('/tipousr/:id', async(req, res) => {
-    try{
-        const {id} = req.params
-        const tipousr = await TiposUsr.findById(id)
-        res.status(200).json(tipousr)
-    } catch (error){
-        console.log(error.message)
-        res.status(500).json({message: error.message})
-    }
-})
-
-// atualiza por id
-app.put('/tipousr/:id', async(req, res) => {
-    try{
-        const {id} = req.params
-        const tipousr = await TiposUsr.findByIdAndUpdate(id, req.body)
-
-        // se não encontrou um id correspondente
-        if(!tipousr){
-            return res.status(404).json({message: `Tipo não encontrado`})
-        }
-
-        // se encontrou
-        const tipoAtualizado = await TiposUsr.findById(id)
-        res.status(200).json(tipoAtualizado)
-
-    } catch (error) {
-        res.status(500).json({message: error.message})
-    }
-})
-
-// delete por id
-app.delete('/tipousr/:id', async(req, res) => {
+app.post('/adicionar-pontos', async (req, res) => {
+    const { cpf, pontos } = req.body;
+    
     try {
-        const {id} = req.params
-        const tipousr = await TiposUsr.findByIdAndDelete(id)
-
-        // se não encontrou um id correspondente
-        if(!tipousr){
-            return res.status(404).json({message: `Tipo não encontrado`})
-        }
-
-        // se encontrou
-        res.status(200).json(tipousr)
-
+      const usuario = await Usuario.findOne({ cpf });
+    
+      if (!usuario) {
+        return res.status(404).json({ message: 'Usuário não encontrado.' });
+      }
+      console.log(usuario.tipo)
+      if (usuario.tipo !== 'frentista') {
+        return res.status(403).json({ message: 'Operação não autorizada.' });
+      }
+      
+    
+      usuario.pontos += pontos;
+  
+      await usuario.save();
+  
+      return res.status(200).json({ message: 'Pontos adicionados com sucesso.' });
     } catch (error) {
-        res.status(500).json({message: error.message})
+      console.log(error);
+      return res.status(500).json({ message: 'Erro ao adicionar pontos.' });
     }
-})
+  });

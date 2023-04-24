@@ -19,16 +19,15 @@ const usuarioSchema = mongoose.Schema(
             type: String,
             required: [true, "Informe uma senha"]
         },
-        /*tipos_usuarios: [
-            {
-                descricao: type: String,
-                required: [true],
-            }
-        ]*/
+        pontos: {
+            type: Number,
+            default: 0,
+        },
         tipo: {
             type: String,
-            required: [true],
-            default: "P"
+            enum: ['administrador', 'frentista', 'usuario'],
+            default: 'usuario',
+            required: true
         }
     },
     {

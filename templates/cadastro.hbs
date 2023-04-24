@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
 </head>
+
 <body>
-    
+
     <h2>cadastro</h2>
 
     <form action="/cadastro" method="post">
@@ -18,10 +20,18 @@
         <br>
         <input type="text" name="nome" placeholder="Nome">
         <br>
+        <label for="tipo">Tipo:</label>
+        <select name="tipo" id="tipo">
+            <option value="administrador">Administrador</option>
+            <option value="frentista">Frentista</option>
+            <option value="usuario">Usuário</option>
+        </select>
+        <br>
         <input type="password" name="senha" placeholder="Senha">
         <input type="submit">
 
     </form>
 
 </body>
+
 </html>
