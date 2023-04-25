@@ -171,21 +171,20 @@ app.delete('/usuario/:id', async(req, res) => {
 
 app.post('/adicionar-pontos', async (req, res) => {
     const { cpf, pontos } = req.body;
-    
+      
     try {
+      const usuarioLogado = await Usuario.findById(req.usuario._id);
+      if (usuarioLogado.tipo !== 'frentista') {
+        return res.status(403).json({ message: 'Operação não autorizada.' });
+      }
+  
       const usuario = await Usuario.findOne({ cpf });
-    
+      
       if (!usuario) {
         return res.status(404).json({ message: 'Usuário não encontrado.' });
       }
-      console.log(usuario.tipo)
-      if (usuario.tipo !== 'frentista') {
-        return res.status(403).json({ message: 'Operação não autorizada.' });
-      }
-      
-    
-      usuario.pontos += pontos;
   
+      usuario.pontos += pontos;
       await usuario.save();
   
       return res.status(200).json({ message: 'Pontos adicionados com sucesso.' });
@@ -194,3 +193,4 @@ app.post('/adicionar-pontos', async (req, res) => {
       return res.status(500).json({ message: 'Erro ao adicionar pontos.' });
     }
   });
+  
