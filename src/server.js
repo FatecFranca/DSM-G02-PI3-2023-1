@@ -184,7 +184,7 @@ app.post('/adicionar-pontos', async (req, res) => {
         return res.status(404).json({ message: 'Usuário não encontrado.' });
       }
   
-      usuario.pontos += pontos;
+      req.usuario.pontos += pontos;
       await usuario.save();
   
       return res.status(200).json({ message: 'Pontos adicionados com sucesso.' });
