@@ -1,28 +1,23 @@
-import React from 'react';
-import * as C from './styles';
+import InputMask from 'react-input-mask';
+import styled from 'styled-components';
+
 
 /**
- * Essa mask é para adicionar uma mascara no campo
- * de input para quen aparece em um formato desejado
- * Ex:
- *    999.999.999-99 -> Para CPF
- *    (99) 999999-9999 -> Para telefone
- * - Lembrando que irá sair com a mascara, logo é preciso
- *   fazer uma formatação do valor caso não queria sair com
- *   a mascara
+ *  Criado um component com a Lib Input Mask
  */
-function InputMask({ mask, value, placeholder, onChange }) {
+export const MaskInput = styled(InputMask)`
+  font-size: 1rem;
+  margin: 1rem 0;
 
-  return (
-    <C.MaskInput
-      type='text'
-      mask={mask}
-      value={value}
-      placeholder={placeholder}
-      onChange={onChange}
-    /> 
-  );
+  background-color: transparent;
+  color: #fff;
 
-}
+  width: 80%;
 
-export default InputMask;
+  outline: none;
+  border: none;
+  border-radius: 6px;
+  border-bottom: 2px #fff solid;
+  padding: 10px 16px;
+`;
+
