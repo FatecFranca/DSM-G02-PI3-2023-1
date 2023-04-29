@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 
 export const Button = styled.button`
-  width: 100%;
+  width: 75%;
   max-width: 360px;
     
   background-color: ${ props => props.bgColor };

@@ -2,7 +2,7 @@ import React from 'react';
 import * as C from './styles';
 
 
-function Button({ Text, type='button', fColor='#fff', bgColor='#087724', value, onClick }) {
+function Button({ Text, type='button', fColor='#fff', bgColor='#0e7511', value, onClick }) {
 
   return (
     <C.Button

@@ -1,9 +1,13 @@
 import GlobalStyle from "./styles/GlobalStyles";
+import RoutesApp from "./routes";
 
 
 function App() {
   return (
-    <GlobalStyle />
+    <>
+      <RoutesApp />
+      <GlobalStyle />
+    </>
   );
 }
 
