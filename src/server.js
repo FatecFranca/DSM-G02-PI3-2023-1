@@ -4,7 +4,6 @@ const app      = express();
 const cors     = require('cors');    // O cors serve para que seja feita a vinculação com o front
 const mongoose = require('mongoose') // O mongoose é usado para fazer a conexão no banco de dados
 const Usuario  = require('./models/usuario')
-const TiposUsr = require('./models/tipos_usuarios')
 const jwt = require('jsonwebtoken')
 
 const path = require('path')
@@ -122,18 +121,24 @@ app.post('/adicionar-pontos', async (req, res) => {
     const { cpf, pontos } = req.body;
       
     try {
-        const {id} = req.params
-        const usuario = await Usuario.findByIdAndDelete(id)
-
-        // se não encontrou um id correspondente
-        if(!usuario){
-            return res.status(404).json({message: `Usuário não encontrado`})
-        }
-        
-        // se encontrou
-        res.status(200).json(usuario)
-
+      const usuarioLogado = await Usuario.findById(req.usuario._id);
+      if (usuarioLogado.tipo !== 'frentista') {
+        return res.status(403).json({ message: 'Operação não autorizada.' });
+      }
+  
+      const usuario = await Usuario.findOne({ cpf });
+      
+      if (!usuario) {
+        return res.status(404).json({ message: 'Usuário não encontrado.' });
+      }
+  
+      usuario.pontos += pontos;
+      await usuario.save();
+  
+      return res.status(200).json({ message: 'Pontos adicionados com sucesso.' });
     } catch (error) {
-        res.status(500).json({message: error.message})
+      console.log(error);
+      return res.status(500).json({ message: 'Erro ao adicionar pontos.' });
     }
-})
+  });
+  
