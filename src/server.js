@@ -15,8 +15,8 @@ const templatePath   = path.join(__dirname, '../templates')
 mongoose.connect('mongodb+srv://admin:Pi12345678@postodb.ydykkyz.mongodb.net/Postodb?retryWrites=true&w=majority').then(() => {
     console.log(`Conectado ao MongoDB`)
     // Iniciando o Node
-    app.listen(3000, () => {
-        console.log(`Rodando na porta 3000`)
+    app.listen(3001, () => {    // Trocado pois o react também roda na porta 3000
+        console.log(`Rodando na porta 3001`)
     })
 }).catch((error) => { // Se o mongoose não conseguir fazer o login no banco, dispara o erro
     console.log(error)
