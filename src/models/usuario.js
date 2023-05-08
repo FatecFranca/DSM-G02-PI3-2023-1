@@ -31,7 +31,7 @@ const usuarioSchema = mongoose.Schema(
         }
     },
     {
-        timestamps: true
+        timestamps: true,
     }
 )
 

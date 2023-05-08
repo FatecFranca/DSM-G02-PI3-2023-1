@@ -115,30 +115,23 @@ app.use('/abastecimento', abastecimentoRouter)
 
 
 
-// OBS: Ainda vou criar os controllers e routers do adicionar-pontos
-
+// rota para adicionar pontos
 app.post('/adicionar-pontos', async (req, res) => {
-    const { cpf, pontos } = req.body;
-      
-    try {
-      const usuarioLogado = await Usuario.findById(req.usuario._id);
-      if (usuarioLogado.tipo !== 'frentista') {
-        return res.status(403).json({ message: 'Operação não autorizada.' });
-      }
+  const { cpf, pontos } = req.body;
+
+  try {
+
+    const usuario = await Usuario.findOne({ cpf });
+    console.log(pontos)
+    usuario.pontos += parseInt(pontos);
+    await usuario.save();
+
+    return res.status(200).json({ message: 'Pontos adicionados com sucesso.' });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: 'Erro ao adicionar pontos.' });
+  }
+});
   
-      const usuario = await Usuario.findOne({ cpf });
-      
-      if (!usuario) {
-        return res.status(404).json({ message: 'Usuário não encontrado.' });
-      }
   
-      usuario.pontos += pontos;
-      await usuario.save();
-  
-      return res.status(200).json({ message: 'Pontos adicionados com sucesso.' });
-    } catch (error) {
-      console.log(error);
-      return res.status(500).json({ message: 'Erro ao adicionar pontos.' });
-    }
-  });
   
