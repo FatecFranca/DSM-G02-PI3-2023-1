@@ -68,4 +68,14 @@ controller.delete = async (req, res) => {
     }
 }
 
+const calcularAbastecimento = async (tipoCombustivel, qtdLitros) => {
+    const combustivel = await Combustivel.findOne({ tipo_combustivel: tipoCombustivel });
+  
+    const valorTotal = combustivel.vlr_litro * qtdLitros;
+    const pontosGerados = valorTotal * combustivel.pts_real_abastecido;
+  
+    return { valorTotal, pontosGerados };
+  }
+  
+
 module.exports = controller

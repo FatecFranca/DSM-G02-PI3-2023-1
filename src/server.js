@@ -9,6 +9,9 @@ const jwt = require('jsonwebtoken')
 const path = require('path')
 const hbs  = require('hbs')
 const { collection } = require('./models/usuario')
+const { calcularAbastecimento } = require('./controllers/combustivel');
+
+
 const templatePath   = path.join(__dirname, '../templates')
 
 // Conectando ao banco
@@ -132,6 +135,30 @@ app.post('/adicionar-pontos', async (req, res) => {
     return res.status(500).json({ message: 'Erro ao adicionar pontos.' });
   }
 });
+
+app.post('/adicionar-abastecimento', async (req, res) => {
+    const { tipoCombustivel, qtdLitros } = req.body;
+  
+    try {
+      const { valorTotal, pontosGerados } = await calcularAbastecimento(tipoCombustivel, qtdLitros);
+  
+      const abastecimento = new Abastecimento({
+        id_combustivel: tipoCombustivel,
+        qtd_litros: qtdLitros,
+        vlr_total: valorTotal,
+        id_frentista: req.usuario._id,
+        id_cliente: req.body.id_cliente,
+        qtd_pontos_gerados: pontosGerados
+      });
+  
+      await abastecimento.save();
+  
+      return res.status(200).json({ message: 'Abastecimento registrado com sucesso.' });
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({ message: 'Erro ao registrar abastecimento.' });
+    }
+  });
   
   
   

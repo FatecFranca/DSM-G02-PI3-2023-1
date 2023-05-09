@@ -2,9 +2,11 @@ const mongoose = require('mongoose')
 
 const combustivelSchema = mongoose.Schema(
     {
-        descricao: {
+        tipo_combustivel: {
             type: String,
-            required: [true, "Informe o combustível"]
+            enum: ['Disel', 'Etanol', 'Gasolina'],
+            default: 'usuario',
+            required: true
         },
         vlr_litro: {
             type: Number,

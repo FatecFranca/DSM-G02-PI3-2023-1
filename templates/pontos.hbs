@@ -1,19 +1,42 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Adicionar pontos para usuário</title>
-  </head>
-  <body>
-    <h1>Adicionar pontos para usuário</h1>
-    <form action="/adicionar-pontos" method="POST">
-      <label for="cpf">CPF do usuário:</label>
-      <input type="text" id="cpf" name="cpf" required>
-      <br>
-      <label for="pontos">Pontos a adicionar:</label>
-      <input type="number" id="pontos" name="pontos" required>
-      <br>
-      <button type="submit">Adicionar</button>
-    </form>
-  </body>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Adicionar pontos para usuário</title>
+</head>
+
+<body>
+  <h1>Adicionar pontos para usuário</h1>
+
+  <form action="/adicionar-abastecimento" method="POST">
+    <label for="tipoCombustivel">Tipo de Combustível:</label>
+    <select name="tipoCombustivel" id="tipoCombustivel">
+      <option value="gasolina">Gasolina</option>
+      <option value="etanol">Etanol</option>
+      <option value="diesel">Diesel</option>
+    </select>
+    <br>
+    <label for="qtdLitros">Quantidade de Litros:</label>
+    <input type="number" name="qtdLitros" id="qtdLitros">
+    <br>
+    <label for="id_cliente">ID do Cliente:</label>
+    <input type="number" name="id_cliente" id="id_cliente">
+    <br>
+    <button type="submit">Adicionar Abastecimento</button>
+  </form>
+
+<br><br><br><br>
+
+  <form action="/adicionar-pontos" method="POST">
+    <label for="cpf">CPF do usuário:</label>
+    <input type="text" id="cpf" name="cpf" required>
+    <br>
+    <label for="pontos">Pontos a adicionar:</label>
+    <input type="number" id="pontos" name="pontos" required>
+    <br>
+    <button type="submit">Adicionar</button>
+  </form>
+</body>
+
 </html>
