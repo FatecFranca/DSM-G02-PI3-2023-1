@@ -4,7 +4,6 @@ const combustivelSchema = mongoose.Schema(
     {
         tipo_combustivel: {
             type: String,
-            enum: ['Disel', 'Etanol', 'Gasolina'],
             default: 'usuario',
             required: true
         },

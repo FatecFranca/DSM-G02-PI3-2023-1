@@ -10,7 +10,7 @@ const path = require('path')
 const hbs  = require('hbs')
 const { collection } = require('./models/usuario')
 const { calcularAbastecimento } = require('./controllers/combustivel');
-
+const Combustivel = require('./models/combustivel')
 
 const templatePath   = path.join(__dirname, '../templates')
 
@@ -45,13 +45,18 @@ app.get('/', (req, res) => {
 })
 
 app.get('/cadastro', (req, res) => {
-        res.render('cadastro')
-    })
+    res.render('cadastro')
+})
 
-app.get('/adicionar-pontos', (req, res) => {
-        res.render('pontos')
-    })
-
+app.get('/adicionar-abastecimento', async (req, res) => {
+    try {
+        const combustiveis = await Combustivel.find().exec();
+        res.render('pontos', { combustiveis: combustiveis})
+    } catch(err) {
+        console.log(err);
+        res.status(500).send('Erro ao buscar os combustíveis');
+    }
+})
 
 function generateToken(userId) {
   const token = jwt.sign({ userId }, 'segredo', { expiresIn: '1d' })
@@ -113,7 +118,8 @@ const combustivelRouter = require('./routes/combustivel')
 app.use('/combustivel', combustivelRouter)
 
 // Abastecimentos
-const abastecimentoRouter = require('./routes/abastecimento')
+const abastecimentoRouter = require('./routes/abastecimento');
+//const Combustivel = require('./models/combustivel');
 app.use('/abastecimento', abastecimentoRouter)
 
 

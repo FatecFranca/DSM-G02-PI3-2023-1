@@ -23,12 +23,12 @@ const usuarioSchema = mongoose.Schema(
             type: Number,
             default: 0,
         },
-        tipo: {
-            type: String,
-            enum: ['administrador', 'frentista', 'usuario'],
-            default: 'usuario',
-            required: true
-        }
+        produtos_resgatados:[{
+            produto: {
+                type: mongoose.ObjectId,
+                ref: 'produto'
+            }
+        }]
     },
     {
         timestamps: true,

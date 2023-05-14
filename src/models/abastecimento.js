@@ -3,7 +3,8 @@ const mongoose = require('mongoose')
 const abastecimentoSchema = mongoose.Schema(
     {
         id_combustivel: {
-            type: String,
+            type: mongoose.ObjectId,
+            ref: 'combustivel',
             required: [true, "Informe o combustível"]
         },
         qtd_litros: {
@@ -15,11 +16,13 @@ const abastecimentoSchema = mongoose.Schema(
             required: [true, "Informe o valor total do abastecimento"]
         },
         id_frentista: {
-            type: Number,
+            type: mongoose.ObjectId,
+            ref: 'usuario',
             required: [true, "Informe o frentista responsável"]
         },
         id_cliente: {
-            type: Number,
+            type: mongoose.ObjectId,
+            ref: 'usuario',
             required: [true, "Informe o cliente"]
         },
         qtd_pontos_gerados: {
