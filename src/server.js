@@ -48,6 +48,50 @@ app.get('/cadastro', (req, res) => {
     res.render('cadastro')
 })
 
+function validarCPF(cpf) {
+    if (cpf.toString().length !== 11) {
+      return false;
+    }
+  
+    if (/^(\d)\1+$/.test(cpf.toString())) {
+      return false;
+    }
+  
+    let soma = 0;
+    let resto;
+  
+    for (let i = 1; i <= 9; i++) {
+      soma = soma + Math.floor(cpf / Math.pow(10, 10 - i)) % 10 * (11 - i);
+    }
+  
+    resto = (soma * 10) % 11;
+  
+    if (resto === 10 || resto === 11) {
+      resto = 0;
+    }
+  
+    if (resto !== Math.floor(cpf / Math.pow(10, 9)) % 10) {
+      return false;
+    }
+  
+    soma = 0;
+    for (let i = 1; i <= 10; i++) {
+      soma = soma + Math.floor(cpf / Math.pow(10, 11 - i)) % 10 * (12 - i);
+    }
+  
+    resto = (soma * 10) % 11;
+  
+    if (resto === 10 || resto === 11) {
+      resto = 0;
+    }
+  
+    if (resto !== Math.floor(cpf / Math.pow(10, 10)) % 10) {
+      return false;
+    }
+  
+    return true;
+  }  
+
 app.get('/adicionar-abastecimento', async (req, res) => {
     try {
         const combustiveis = await Combustivel.find().exec();
@@ -90,19 +134,32 @@ app.post("/login", async (req, res) => {
     }
 })
 
-app.post('/cadastro', async(req, res) => {
-    try{
-        const usuario = {
-            nome: req.body.nome,
-            senha: req.body.senha
-        }
-        await Usuario.create(req.body)
-        res.render("home")
-    } catch (error){
-        console.log(error.message)
-        res.status(500).json({message: error.message})
+app.post('/cadastro', async (req, res) => {
+    try {
+      const usuarioExistente = await Usuario.findOne({ email: req.body.email });
+      if (usuarioExistente) {
+        return res.status(400).json({ message: 'Já existe um usuário com esse email' });
+      }
+  
+      // Validação do CPF
+      const cpf = req.body.cpf.toString();
+      if (!validarCPF(cpf)) {
+        return res.status(400).json({ message: 'CPF inválido' });
+      }
+  
+      const usuario = {
+        nome: req.body.nome,
+        senha: req.body.senha,
+        cpf: cpf
+      };
+  
+      await Usuario.create(usuario);
+      res.render("home");
+    } catch (error) {
+      console.log(error.message);
+      res.status(500).json({ message: error.message });
     }
-})
+  });
 
 //CRUDs
 // Usuarios

@@ -7,7 +7,7 @@ const usuarioSchema = mongoose.Schema(
             required: [true, "Informe um nome"]
         },
         cpf: {
-            type: String,
+            type: Number,
             required: [true]
         },
         email: {
