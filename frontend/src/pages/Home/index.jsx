@@ -47,8 +47,10 @@ function Home() {
           Icon={ BsGeoAlt }
           color='#fff'
         />
+        { /* Essa tela na verdade vai ser a listagem de abastecimentos, mas por enquanto vai ser a de cadastro de abastecimento para teste */ }
         <Acesso
-          Text='Consultas'
+          Text='Abastecimentos'
+          to='/abastecimento'
           Icon={ TbFile }
           color='#fff'
         />

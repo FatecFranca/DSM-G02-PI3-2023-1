@@ -6,6 +6,7 @@ import useAuth from "../hooks/useAuth";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Home from '../pages/Home';
+import Abastecimento from "../pages/Abastecimento";
 
 
 function Logado({ Item }) {
@@ -26,6 +27,7 @@ function RoutesApp() {
           <Route exact path="/login" element={ <Login /> } />
           <Route path="/registrar" element={ <Register /> } />
           <Route path="/" element={ <Logado Item={ Home } /> } />
+          <Route path="/abastecimento" element={ <Logado Item={ Abastecimento } /> } />
 
           <Route path="*" element={ <Login /> } />
         </Routes>

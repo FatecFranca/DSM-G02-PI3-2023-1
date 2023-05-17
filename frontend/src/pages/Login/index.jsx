@@ -35,17 +35,17 @@ function Login() {
       <C.Title>Faça seu Login!</C.Title>
 
       <C.FormContainer>
-      <Input
+        <Input
           type='email'
           placeholder='Email'
-          value={email}
-          onChange={e => [setEmail(e.target.value), setErro('')]}
+          value={ email }
+          onChange={ e => [setEmail(e.target.value), setErro('')]}
         />
         <Input
           type='password'
           placeholder='*****'
-          value={senha}
-          onChange={e => [setSenha(e.target.value), setErro('')]}
+          value={ senha }
+          onChange={ e => [setSenha(e.target.value), setErro('')] }
         />
         <C.ErrorLabel>{erro}</C.ErrorLabel>
         <C.RegisterSpan>Não tem conta?
@@ -55,7 +55,7 @@ function Login() {
         </C.RegisterSpan>
         <Button
           Text='Entrar'
-          onClick={handleLogin}
+          onClick={ handleLogin }
         />
       </C.FormContainer>
     </C.LoginContainer>

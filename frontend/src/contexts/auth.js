@@ -23,6 +23,8 @@ export function AuthProvider({ children }) {
   }, []);
 
 
+  /*          USUÁRIO           */
+
   async function registrar(nome, cpf, email, senha, tipo='usuario') {
     // Verifica se já há esse email cadastrado
     const hasUser = await api.get('/usuario')
@@ -51,7 +53,6 @@ export function AuthProvider({ children }) {
     return;
   }
 
-
   async function login(email, senha) {
     // Pega todos os usuário
     const hasUser = await api.get('/usuario')
@@ -68,7 +69,6 @@ export function AuthProvider({ children }) {
     }
   }
 
-
   async function signout() {
     // deslogar
     setUser(null);
@@ -76,9 +76,27 @@ export function AuthProvider({ children }) {
   }
 
 
+  /*          COMBUSTIVEL           */
+
+  async function combustiveis() {
+    const hasCombustiveis = await api.get('/combustivel')
+      .then(res => res.data)
+      .catch(err => console.log(err));
+    
+    if (hasCombustiveis) {
+      return hasCombustiveis;
+    } else {
+      alert('Não foi possivel requisitar os combustiveis!');
+    }
+  }
+
+
   return (
     <AuthContext.Provider
-      value={{ user, logado: !!user, registrar, login, signout }}
+      value={{
+        user, logado: !!user, registrar, login, signout,
+        combustiveis
+      }}
     >
       { children }
     </AuthContext.Provider>
