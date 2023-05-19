@@ -39,7 +39,7 @@ function Login() {
           type='email'
           placeholder='Email'
           value={ email }
-          onChange={ e => [setEmail(e.target.value), setErro('')]}
+          onChange={ e => [setEmail(e.target.value), setErro('')] }
         />
         <Input
           type='password'
@@ -47,7 +47,7 @@ function Login() {
           value={ senha }
           onChange={ e => [setSenha(e.target.value), setErro('')] }
         />
-        <C.ErrorLabel>{erro}</C.ErrorLabel>
+        <C.ErrorLabel>{ erro }</C.ErrorLabel>
         <C.RegisterSpan>Não tem conta?
           <Link to='/registrar'>
             &nbsp;Registar-se

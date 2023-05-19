@@ -52,32 +52,32 @@ function Register() {
       <Input
           type='text'
           placeholder='Nome'
-          value={nome}
-          onChange={e => [setNome(e.target.value), setErro('')]}
+          value={ nome }
+          onChange={ e => [setNome(e.target.value), setErro('')] }
         />
         <Input
           type='email'
           placeholder='exemplo@email.com'
-          value={email}
-          onChange={e => [setEmail(e.target.value), setErro('')]}
+          value={ email }
+          onChange={ e => [setEmail(e.target.value), setErro('')] }
         />
         <InputMask
           mask='999.999.999-99'
           placeholder='CPF'
-          value={cpf}
-          onChange={e => [setCpf(e.target.value), setErro('')]}
+          value={ cpf }
+          onChange={ e => [setCpf(e.target.value), setErro('')] }
         />
         <Input
           type='password'
           placeholder='Senha'
-          value={senha}
-          onChange={e => [setSenha(e.target.value), setErro('')]}
+          value={ senha }
+          onChange={ e => [setSenha(e.target.value), setErro('')] }
         />
         <Input
           type='password'
           placeholder='Confirmar senha'
-          value={confirmar}
-          onChange={e => [setConfirmar(e.target.value), setErro('')]}
+          value={ confirmar }
+          onChange={ e => [setConfirmar(e.target.value), setErro('')] }
         />
         <C.ErrorLabel>{ erro }</C.ErrorLabel>
         <C.LoginSpan>Já possui conta?
@@ -87,7 +87,7 @@ function Register() {
         </C.LoginSpan>
         <Button
           Text='Cadastrar'
-          onClick={handleRegistrar}
+          onClick={ handleRegistrar }
         />
       </C.FormContainer>
     </C.RegisterContainer>

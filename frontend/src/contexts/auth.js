@@ -78,24 +78,31 @@ export function AuthProvider({ children }) {
 
   /*          COMBUSTIVEL           */
 
-  async function combustiveis() {
+  async function getCombustiveis() {
     const hasCombustiveis = await api.get('/combustivel')
       .then(res => res.data)
       .catch(err => console.log(err));
-    
-    if (hasCombustiveis) {
-      return hasCombustiveis;
-    } else {
-      alert('Não foi possivel requisitar os combustiveis!');
-    }
+
+    return hasCombustiveis;
   }
 
+
+  /*          ABASTECIMENTO            */
+
+  async function abastecer(clienteCpf, litros, valor_litro, pontos_litro) {
+    const cliente = await api.get('/usuario')
+      .then(res => res.data.find(u => u.cpf === clienteCpf))
+      .catch(err => console.log(err));
+    
+    if (!cliente) return 'Não há cliente cadastrado com esse CPF!';
+
+  }
 
   return (
     <AuthContext.Provider
       value={{
         user, logado: !!user, registrar, login, signout,
-        combustiveis
+        getCombustiveis, abastecer
       }}
     >
       { children }
