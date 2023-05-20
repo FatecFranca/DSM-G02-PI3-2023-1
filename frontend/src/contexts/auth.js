@@ -89,12 +89,30 @@ export function AuthProvider({ children }) {
 
   /*          ABASTECIMENTO            */
 
-  async function abastecer(clienteCpf, litros, valor_litro, pontos_litro) {
+  async function abastecer(clienteCpf, litros, combustivelId, frentistaId) {
+    if (!combustivelId) return 'Selecione o combutivel corretamente!';
+
     const cliente = await api.get('/usuario')
-      .then(res => res.data.find(u => u.cpf === clienteCpf))
+      .then(res => res.data.find(u => +u.cpf === +clienteCpf))
       .catch(err => console.log(err));
-    
+
     if (!cliente) return 'Não há cliente cadastrado com esse CPF!';
+
+    const combustivel = await api.get(`/combustivel/${combustivelId}`)
+      .then(res => res.data)
+      .catch(err => console.log(err));
+
+    const valorTotal = +(+litros * +combustivel.vlr_litro).toFixed(2);
+    const pontosTotal = +(+litros * +combustivel.pts_real_abastecido).toFixed(2);
+
+    return await api.post('/abastecimento', {
+      id_combustivel: combustivelId,
+      qtd_litros: litros,
+      vlr_total: valorTotal,
+      id_frentista: frentistaId,
+      id_cliente: cliente._id,
+      qtd_pontos_gerados: pontosTotal
+    }).then((res) => res.data).catch(err => console.log(err));
 
   }
 

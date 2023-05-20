@@ -7,12 +7,9 @@ export const Container = styled.div`
 
   text-align: center;
   align-items: center;
-
-  padding: 3em;
 `;
 
 export const Title = styled.h2`
-  margin-top: 2vh;
   margin-bottom: 6vh;
 `;
 
@@ -34,3 +31,12 @@ export const ErrorLabel = styled.span`
   font-style: italic;
 `;
 
+export const Select = styled.select`
+  width: 80%;
+
+  /*       top    right  bottom left */
+  padding: 0.4rem 1.6rem 0.4rem 0.8rem;
+  margin-bottom: 0.1rem;
+  border: 0;
+  border-radius: 16rem;
+`;

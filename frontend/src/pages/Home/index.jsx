@@ -1,16 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { AiOutlineUser } from 'react-icons/ai';
 import { BsGeoAlt, BsWhatsapp } from 'react-icons/bs';
 import { HiOutlineHome } from 'react-icons/hi';
 import { TbFile, TbSocial } from 'react-icons/tb';
 import * as C from './styles';
 
+import useAuth from '../../hooks/useAuth';
 
 import Header from '../../components/Header';
 import Acesso from './components/Acesso';
 
 
 function Home() {
+
+  const { user } = useAuth();
+
+  useEffect(() => {
+    console.log(`Bem-vindo, ${user.nome}!`);
+  }, [user]);
 
   return (
     <C.HomeContainer>
@@ -49,8 +56,8 @@ function Home() {
         />
         { /* Essa tela na verdade vai ser a listagem de abastecimentos, mas por enquanto vai ser a de cadastro de abastecimento para teste */ }
         <Acesso
-          Text='Abastecimentos'
-          to='/abastecimento'
+          Text='Abastecimento'
+          to={user?.tipo === 'frenista' ? '/abastecimento' : '/'}
           Icon={ TbFile }
           color='#fff'
         />

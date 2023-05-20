@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import * as C from './styles';
 
 import useAuth from '../../hooks/useAuth';
@@ -11,6 +11,7 @@ import Button from '../../components/Button';
 function Register() {
 
   const { registrar } = useAuth();
+  const navigate = useNavigate();
 
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
@@ -42,6 +43,8 @@ function Register() {
       setErro(res);
       return;
     }
+
+    navigate('/login');
   }
 
   return (

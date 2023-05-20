@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import * as C from './styles';
 
 import useAuth from '../../hooks/useAuth';
@@ -10,6 +10,7 @@ import Button from '../../components/Button';
 function Login() {
 
   const { login } = useAuth();
+  const navigate = useNavigate();
 
   // States para o login
   const [email, setEmail] = useState('');
@@ -28,6 +29,8 @@ function Login() {
       setErro(res);
       return;
     }
+
+    navigate('/');
   }
 
   return (
