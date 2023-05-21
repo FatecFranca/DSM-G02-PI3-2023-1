@@ -73,9 +73,7 @@ function Abastecimento() {
   return (
     <C.Container>
       <Header />
-
-      <C.Title>Abastecimento</C.Title>
-
+      <C.Title>Novo Abastecimento</C.Title>
       <C.AbasteForm>
         <C.Select onChange={ e => setCombustivel(e.target.value) }>
           <option value=''>Selecione um combustivel!</option>

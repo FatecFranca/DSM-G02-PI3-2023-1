@@ -17,12 +17,12 @@ export const Title = styled.h2`
 `;
 
 export const FormContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  
+  align-items: center;
 
-    width: 50%;
+  width: 50%;
 `;
 
 export const LoginSpan = styled.span`

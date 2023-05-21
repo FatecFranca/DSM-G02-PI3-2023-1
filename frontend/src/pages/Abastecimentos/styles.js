@@ -1,0 +1,45 @@
+import styled from "styled-components";
+
+
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  text-align: center;
+  align-items: center;
+`;
+
+
+export const Title = styled.h2`
+  margin-bottom: 6vh;
+`;
+
+
+export const AbastecimentoList = styled.div`
+  display: flex;
+  flex-direction: column;
+  
+  align-items: center;
+
+  width: 75%;
+`;
+
+
+export const Table = styled.table`
+  border: 2px solid #fff;
+  padding: 0;
+  margin: 0;
+`;
+
+
+export const TR = styled.tr`
+  & th {
+    padding: 0.4rem 1rem;
+    border-bottom: 1px solid #ddd;
+  }
+
+  & td {
+    padding: 0.4rem 0;
+  }
+`;
+

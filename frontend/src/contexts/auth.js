@@ -12,7 +12,7 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     // Toda vez que inicializar, verificar se há usuário logado
-    const userToken = localStorage.getItem('user_token');
+    const userToken = JSON.parse(localStorage.getItem('user_token'));
 
     if (userToken) {
       api.get('/usuario')
@@ -116,11 +116,19 @@ export function AuthProvider({ children }) {
 
   }
 
+  async function getAbastecimentos(clienteId) {
+    const hasAbastecimento = await api.get('/abastecimento')
+      .then(res => res.data.filter(a => a.id_cliente === clienteId))
+      .catch(err => console.log(err));
+    
+    return hasAbastecimento;
+  }
+
   return (
     <AuthContext.Provider
       value={{
         user, logado: !!user, registrar, login, signout,
-        getCombustiveis, abastecer
+        getCombustiveis, abastecer, getAbastecimentos
       }}
     >
       { children }

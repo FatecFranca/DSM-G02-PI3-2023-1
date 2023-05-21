@@ -7,6 +7,7 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Home from '../pages/Home';
 import Abastecimento from "../pages/Abastecimento";
+import Abastecimentos from "../pages/Abastecimentos";
 
 
 function Logado({ Item }) {
@@ -27,7 +28,8 @@ function RoutesApp() {
           <Route exact path="/login" element={ <Login /> } />
           <Route path="/registrar" element={ <Register /> } />
           <Route path="/" element={ <Logado Item={ Home } /> } />
-          <Route path="/abastecimento" element={ <Logado Item={ Abastecimento } /> } />
+          <Route path="/abastecimento" element={ <Logado Item={ Abastecimento } /> } />   {/* Form do Frentista */}
+          <Route path="/abastecimentos" element={ <Logado Item={ Abastecimentos } /> } /> {/* Lista do Usuário */}
 
           <Route path="*" element={ <Login /> } />
         </Routes>

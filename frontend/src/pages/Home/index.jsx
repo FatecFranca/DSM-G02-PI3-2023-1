@@ -57,7 +57,7 @@ function Home() {
         { /* Essa tela na verdade vai ser a listagem de abastecimentos, mas por enquanto vai ser a de cadastro de abastecimento para teste */ }
         <Acesso
           Text='Abastecimento'
-          to={user?.tipo === 'frenista' ? '/abastecimento' : '/'}
+          to={user?.tipo === 'frenista' ? '/abastecimento' : '/abastecimentos'}
           Icon={ TbFile }
           color='#fff'
         />
