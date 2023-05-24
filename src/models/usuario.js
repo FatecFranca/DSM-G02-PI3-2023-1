@@ -19,6 +19,12 @@ const usuarioSchema = mongoose.Schema(
             type: String,
             required: [true, "Informe uma senha"]
         },
+        tipo: {
+            type: String,
+            enum: ['administrador', 'frentista', 'usuario'],
+            default: 'usuario',
+            required: true
+        },
         pontos: {
             type: Number,
             default: 0,
