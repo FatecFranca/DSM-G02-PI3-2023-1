@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { AiOutlineUser } from 'react-icons/ai';
-import { BsGeoAlt, BsWhatsapp } from 'react-icons/bs';
-import { HiOutlineHome } from 'react-icons/hi';
+import { BsGeoAlt } from 'react-icons/bs';
+import { FaEnvelope } from 'react-icons/fa';
 import { TbFile, TbSocial } from 'react-icons/tb';
 import * as C from './styles';
 
@@ -24,43 +24,44 @@ function Home() {
       <Header />
       <C.HomeBody>
         <C.Acessos>
-          <Acesso
-            Text='Redes Sociais'
-            Icon={ TbSocial }
-            bgColor='#696969'
-          />
-          <Acesso
-            Text='Suporte'
-            Icon={ BsWhatsapp }
-            bgColor='#696969'
-          />
+
           <Acesso
             Text='Meu Perfil'
             to='/perfil'
-            Icon={ AiOutlineUser }
+            Icon={AiOutlineUser}
+            bgColor='#696969'
+          />
+          <Acesso
+            Text='Abastecimento'
+            to={user?.tipo === 'frenista' ? '/abastecimento' : '/abastecimentos'}
+            Icon={TbFile}
             bgColor='#696969'
           />
         </C.Acessos>
       </C.HomeBody>
       <C.Footer>
+
         <Acesso
-          Text='Inicio'
-          Icon={ HiOutlineHome }
-          to='/'
+          Text='Redes Sociais'
+          Icon={TbSocial}
           color='#fff'
+          to='https://www.facebook.com/profile.php?id=100092743341231&sk=about_life_events'
         />
         <Acesso
           Text='Onde Estamos'
-          Icon={ BsGeoAlt }
+          Icon={BsGeoAlt}
           color='#fff'
+          to='https://www.google.com.br/maps/@-20.5359235,-47.3924639,15.58z?entry=ttu'
         />
-        { /* Essa tela na verdade vai ser a listagem de abastecimentos, mas por enquanto vai ser a de cadastro de abastecimento para teste */ }
+
         <Acesso
-          Text='Abastecimento'
-          to={user?.tipo === 'frenista' ? '/abastecimento' : '/abastecimentos'}
-          Icon={ TbFile }
+          Text='Suporte'
+          Icon={FaEnvelope}
           color='#fff'
+          to='mailto:postoshiny@gmail.com'
         />
+        { /* Essa tela na verdade vai ser a listagem de abastecimentos, mas por enquanto vai ser a de cadastro de abastecimento para teste */}
+
       </C.Footer>
     </C.HomeContainer>
   );

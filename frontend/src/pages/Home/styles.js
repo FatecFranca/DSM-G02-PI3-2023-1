@@ -8,7 +8,6 @@ export const HomeContainer = styled.div`
   width: 100%;
 `;
 
-
 export const HomeBody = styled.div`
   display: flex;
   flex-direction: column;
@@ -19,9 +18,8 @@ export const HomeBody = styled.div`
   padding: 2rem 0;
 
   color: #222;
-  background-color: #fff;
+  background-color: #F7EDE2; /* Tom de bege suave */
 `;
-
 
 export const Acessos = styled.div`
   display: flex;
@@ -31,7 +29,6 @@ export const Acessos = styled.div`
   width: 100%;
 `;
 
-
 export const Footer = styled.footer`
   display: flex;
   justify-content: space-around;
@@ -39,5 +36,5 @@ export const Footer = styled.footer`
   padding: 2rem;
 
   color: #fff;
-  background-color: #000;
+  background-color: #7C9885; /* Verde claro */
 `;

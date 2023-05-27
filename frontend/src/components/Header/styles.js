@@ -12,12 +12,6 @@ export const Header = styled.header`
   height: 100%;
 `;
 
-export const LogoImg = styled.img`
-  width: 48px;
-  height: 48px;
-  margin: 2rem;
-`;
-
 export const Actions = styled.div`
   display: flex;
   flex-direction: row;
