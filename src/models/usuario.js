@@ -8,7 +8,8 @@ const usuarioSchema = mongoose.Schema(
         },
         cpf: {
             type: Number,
-            required: [true]
+            required: [true],
+            unique: true
         },
         email: {
             type: String, 

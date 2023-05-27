@@ -10,7 +10,7 @@ import Button from '../../components/Button';
 
 function Abastecimento() {
 
-  const { user, getCombustiveis, abastecer } = useAuth();
+  const { user, getCombustiveis, abastecer, calcularPontos } = useAuth();
   const navigate = useNavigate();
 
   const [frentista, setFrentista] = useState('');
@@ -18,34 +18,44 @@ function Abastecimento() {
   const [clientCpf, setClienteCpf] = useState('');
   const [listaCom, setListaCom] = useState([]);
   const [combustivel, setCombustivel] = useState('');
+  const [pontosGerados, setPontosGerados] = useState(0);
 
   const [erro, setErro] = useState('');
 
   useEffect(() => {
+
     async function fetchCombustivel() {
       const res = await getCombustiveis();
       setListaCom(res);
     }
+
     fetchCombustivel();
+
   }, [getCombustiveis]);
+
   useEffect(() => {
+    
     if (user?.tipo === 'frentista') {
       setFrentista(user);
     } else {
       navigate('/');
       alert('Usuário logado não é frentista!');
     }
+
   }, [user]);
 
   async function handleAbastecimento() {
+
     if (!litros || !clientCpf) {
       setErro('Preencha todos os campos!');
       return;
     }
+
     if (litros < 0) {
       setErro('Coloque quantidade de litros positivo!');
       return;
     }
+
     if (!combustivel.length) {
       setErro('Selecione o combustivel corretamente!');
       return;
@@ -63,10 +73,17 @@ function Abastecimento() {
       setErro(res);
       return;
     } else {
-      alert('Abastecimento realizado com sucesso');
+      alert('Abastecimento realizado com sucesso 1');
       setLitros('');
       setClienteCpf('');
     }
+
+  }
+
+  async function handleCalcularPontos() {
+
+    const res = await calcularPontos(litros, combustivel)
+    setPontosGerados(res);
 
   }
 
@@ -75,6 +92,7 @@ function Abastecimento() {
       <Header />
       <C.Title>Novo Abastecimento</C.Title>
       <C.AbasteForm>
+
         <C.Select onChange={ e => setCombustivel(e.target.value) }>
           <option value=''>Selecione um combustivel!</option>
           {listaCom.map((combu) => (
@@ -86,24 +104,42 @@ function Abastecimento() {
             </option>
           ))}
         </C.Select>
+
         <Input
           type='number'
           placeholder='Litros abastecidos'
           value={ litros }
           onChange={ e => [setLitros(e.target.value), setErro('')] }
         />
+
         <InputMask
           mask='999.999.999-99'
           placeholder='CPF'
           value={ clientCpf }
           onChange={ e => [setClienteCpf(e.target.value), setErro('')] }
         />
+
+        <Input
+          type='number'
+          placeholder='Pontos Gerados'
+          value={pontosGerados}
+          readOnly
+        />
+
         <C.ErrorLabel>{ erro }</C.ErrorLabel>
+
         <Button
           Text='Abastecer!'
           type='button'
           onClick={ handleAbastecimento }
         />
+
+        <Button
+          Text='Calcular pontos!'
+          type='button'
+          onClick={ handleCalcularPontos }
+        />
+
       </C.AbasteForm>
     </C.Container>
   );

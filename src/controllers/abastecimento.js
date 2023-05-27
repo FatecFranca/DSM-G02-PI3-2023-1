@@ -31,4 +31,14 @@ controller.retrieveOne = async(req, res) => {
     }
 }
 
+controller.deleteAll = async (req, res) => {
+    try {
+        await Abastecimento.deleteMany({}) // Exclui todos os documentos da coleção "Abastecimento"
+
+        res.status(200).json({ message: "Todos os abastecimentos foram excluídos com sucesso" })
+    } catch (error) {
+        res.status(500).json({ message: error.message })
+    }
+}
+
 module.exports = controller

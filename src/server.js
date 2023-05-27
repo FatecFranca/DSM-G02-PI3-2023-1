@@ -102,6 +102,18 @@ app.get('/adicionar-abastecimento', async (req, res) => {
     }
 })
 
+/*
+
+app.get('/produtos', async (req, res) => {
+  try {
+
+  } catch {
+
+  }
+})
+
+*/
+
 function generateToken(userId) {
   const token = jwt.sign({ userId }, 'segredo', { expiresIn: '1d' })
   return token
@@ -188,8 +200,9 @@ app.post('/adicionar-pontos', async (req, res) => {
   try {
 
     const usuario = await Usuario.findOne({ cpf });
-    console.log(pontos)
+
     usuario.pontos += parseInt(pontos);
+
     await usuario.save();
 
     return res.status(200).json({ message: 'Pontos adicionados com sucesso.' });
@@ -211,17 +224,24 @@ app.post('/adicionar-abastecimento', async (req, res) => {
         vlr_total: valorTotal,
         id_frentista: req.usuario._id,
         id_cliente: req.body.id_cliente,
-        qtd_pontos_gerados: pontosGerados
+        //qtd_pontos_gerados: pontosGerados
+        qtd_pontos_gerados: 100
       });
   
       await abastecimento.save();
   
-      return res.status(200).json({ message: 'Abastecimento registrado com sucesso.' });
+      return res.status(200).json({ message: 'Abastecimento registrado com sucesso. 2' });
+
     } catch (error) {
       console.error(error);
       return res.status(500).json({ message: 'Erro ao registrar abastecimento.' });
     }
-  });
+});
+
+/*  
+
+app.post('/produtos', async (req, res) => {
   
-  
-  
+})  
+
+*/

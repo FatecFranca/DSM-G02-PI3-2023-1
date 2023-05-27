@@ -92,8 +92,8 @@ export function AuthProvider({ children }) {
   async function abastecer(clienteCpf, litros, combustivelId, frentistaId) {
     if (!combustivelId) return 'Selecione o combutivel corretamente!';
 
-    const cliente = await api.get('/usuario')
-      .then(res => res.data.find(u => +u.cpf === +clienteCpf))
+    const cliente = await api.get('/usuario', { params: { cpf: clienteCpf}})
+      .then(res => res.data[0])
       .catch(err => console.log(err));
 
     if (!cliente) return 'Não há cliente cadastrado com esse CPF!';
@@ -105,6 +105,11 @@ export function AuthProvider({ children }) {
     const valorTotal = +(+litros * +combustivel.vlr_litro).toFixed(2);
     const pontosTotal = +(+litros * +combustivel.pts_real_abastecido).toFixed(2);
 
+    cliente.pontos += pontosTotal
+
+    await api.put(`usuario/${cliente._id}`, cliente)
+      .catch(err => console.log(err))
+
     return await api.post('/abastecimento', {
       id_combustivel: combustivelId,
       qtd_litros: litros,
@@ -113,6 +118,18 @@ export function AuthProvider({ children }) {
       id_cliente: cliente._id,
       qtd_pontos_gerados: pontosTotal
     }).then((res) => res.data).catch(err => console.log(err));
+
+  }
+
+  async function calcularPontos (litros, combustivelId) {
+
+    const combustivel = await api.get(`/combustivel/${combustivelId}`)
+      .then(res => res.data)
+      .catch(err => console.log(err));
+
+    const pontosTotal = +(+litros * +combustivel.pts_real_abastecido).toFixed(2);  
+
+    return pontosTotal
 
   }
 
@@ -128,7 +145,7 @@ export function AuthProvider({ children }) {
     <AuthContext.Provider
       value={{
         user, logado: !!user, registrar, login, signout,
-        getCombustiveis, abastecer, getAbastecimentos
+        getCombustiveis, abastecer, getAbastecimentos, calcularPontos
       }}
     >
       { children }

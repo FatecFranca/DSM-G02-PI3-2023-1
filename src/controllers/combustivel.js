@@ -75,7 +75,12 @@ const calcularAbastecimento = async (tipoCombustivel, qtdLitros) => {
     const pontosGerados = valorTotal * combustivel.pts_real_abastecido;
   
     return { valorTotal, pontosGerados };
-  }
-  
+}
+
+/*
+const lancarPontos = async ( pontosGerados ) => {
+
+}
+*/
 
 module.exports = controller
