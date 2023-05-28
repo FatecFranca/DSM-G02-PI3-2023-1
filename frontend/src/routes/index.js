@@ -8,7 +8,7 @@ import Register from "../pages/Register";
 import Home from '../pages/Home';
 import Abastecimento from "../pages/Abastecimento";
 import Abastecimentos from "../pages/Abastecimentos";
-
+import UpdateProfile from "../pages/UpdateProfile";
 
 function Logado({ Item }) {
   // Autenticação se está logado
@@ -30,7 +30,7 @@ function RoutesApp() {
           <Route path="/" element={ <Logado Item={ Home } /> } />
           <Route path="/abastecimento" element={ <Logado Item={ Abastecimento } /> } />   {/* Form do Frentista */}
           <Route path="/abastecimentos" element={ <Logado Item={ Abastecimentos } /> } /> {/* Lista do Usuário */}
-
+          <Route path="/perfil" element={<Logado Item={UpdateProfile} />} />
           <Route path="*" element={ <Login /> } />
         </Routes>
       </Fragment>
