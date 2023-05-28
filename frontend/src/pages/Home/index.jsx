@@ -16,7 +16,9 @@ function Home() {
   const { user } = useAuth();
 
   useEffect(() => {
-    console.log(`Bem-vindo, ${user.nome}!`);
+    if (user) {
+      console.log(`Bem-vindo, ${user.nome}!`);
+    }
   }, [user]);
 
   return (
@@ -33,7 +35,7 @@ function Home() {
           />
           <Acesso
             Text='Abastecimento'
-            to={user?.tipo === 'frenista' ? '/abastecimento' : '/abastecimentos'}
+            to={user?.tipo === 'frentista' ? '/abastecimento' : '/abastecimentos'}
             Icon={TbFile}
             bgColor='#696969'
           />

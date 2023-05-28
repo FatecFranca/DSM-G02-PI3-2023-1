@@ -42,7 +42,7 @@ function Abastecimento() {
       alert('Usuário logado não é frentista!');
     }
 
-  }, [user]);
+  }, [user, navigate]);
 
   async function handleAbastecimento() {
 
@@ -93,7 +93,7 @@ function Abastecimento() {
       <C.Title>Novo Abastecimento</C.Title>
       <C.AbasteForm>
 
-        <C.Select onChange={ e => setCombustivel(e.target.value) }>
+        <C.Select onChange={ e => [setCombustivel(e.target.value), setErro(''), setPontosGerados('')] }>
           <option value=''>Selecione um combustivel!</option>
           {listaCom.map((combu) => (
             <option
@@ -122,7 +122,7 @@ function Abastecimento() {
         <Input
           type='number'
           placeholder='Pontos Gerados'
-          value={pontosGerados}
+          value={ pontosGerados }
           readOnly
         />
 
@@ -139,8 +139,8 @@ function Abastecimento() {
           type='button'
           onClick={ handleCalcularPontos }
         />
-
       </C.AbasteForm>
+      <C.BackButton to="/">Voltar</C.BackButton>
     </C.Container>
   );
 

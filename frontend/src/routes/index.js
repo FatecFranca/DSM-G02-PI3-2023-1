@@ -14,7 +14,7 @@ function Logado({ Item }) {
   // Autenticação se está logado
   const { logado } = useAuth();
 
-  return <Item />; // Apenas para testes
+  // return <Item />; // Apenas para testes
   return logado ? <Item /> : <Login />;
 }
 

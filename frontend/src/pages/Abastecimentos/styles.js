@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from 'react-router-dom';
 
 
 export const Container = styled.div`
@@ -41,5 +42,12 @@ export const TR = styled.tr`
   & td {
     padding: 0.4rem 0;
   }
+`;
+
+
+export const BackButton = styled(Link)`
+  margin-top: 2em;
+  text-decoration: none;
+  color: #7C9885;
 `;
 

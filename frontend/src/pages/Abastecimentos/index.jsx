@@ -58,6 +58,7 @@ function Abastecimentos() {
           </tbody>
         </C.Table>
       </C.AbastecimentoList>
+      <C.BackButton to="/">Voltar</C.BackButton>
     </C.Container>
   );
 

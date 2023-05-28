@@ -69,6 +69,24 @@ export function AuthProvider({ children }) {
     }
   }
 
+  async function updateProfile(id, nome, email, cpf, senha) {
+    await api.put(`/usuario/${id}`, {
+      nome: nome,
+      cpf: cpf,
+      email: email,
+      senha: senha
+    }).then(async res => {
+      alert('Cadastro atualizado com sucesso!');
+      const token = Math.random().toString(36).substring(2);
+      const Email = res.data.email;
+      localStorage.setItem('user_token', JSON.stringify({ email: Email, token }))
+      setUser(await res.data);
+    }).catch(err => {
+      alert('Algo de errado ao atualizar o cadastro aconteceu!');
+      console.log(err);
+    });
+  }
+
   async function signout() {
     // deslogar
     setUser(null);
@@ -144,7 +162,7 @@ export function AuthProvider({ children }) {
   return (
     <AuthContext.Provider
       value={{
-        user, logado: !!user, registrar, login, signout,
+        user, logado: !!user, registrar, login, signout, updateProfile,
         getCombustiveis, abastecer, getAbastecimentos, calcularPontos
       }}
     >
