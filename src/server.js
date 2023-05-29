@@ -191,8 +191,6 @@ const abastecimentoRouter = require('./routes/abastecimento');
 //const Combustivel = require('./models/combustivel');
 app.use('/abastecimento', abastecimentoRouter)
 
-
-
 // rota para adicionar pontos
 app.post('/adicionar-pontos', async (req, res) => {
   const { cpf, pontos } = req.body;

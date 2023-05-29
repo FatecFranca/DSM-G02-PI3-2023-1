@@ -35,11 +35,11 @@ function Abastecimento() {
 
   useEffect(() => {
     
-    if (user?.tipo === 'frentista') {
+    if (user?.tipo === 'frentista' || user?.tipo === 'administrador') {
       setFrentista(user);
     } else {
       navigate('/');
-      alert('Usuário logado não é frentista!');
+      alert('Usuário logado não tem autoridade para realizar abastecimentos!');
     }
 
   }, [user, navigate]);

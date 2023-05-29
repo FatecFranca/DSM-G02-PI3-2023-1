@@ -33,12 +33,25 @@ function Home() {
             Icon={AiOutlineUser}
             bgColor='#696969'
           />
-          <Acesso
-            Text='Abastecimento'
-            to={user?.tipo === 'frentista' ? '/abastecimento' : '/abastecimentos'}
-            Icon={TbFile}
-            bgColor='#696969'
-          />
+
+          {user?.tipo === 'frentista' || user?.tipo === 'administrador' ? (
+            <Acesso
+              Text='Abastecimento'
+              to='/abastecimento'
+              Icon={TbFile}
+              bgColor='#696969'
+            />
+          ) : null}
+
+          {user?.tipo === 'administrador' ? (
+            <Acesso
+              Text='Cadastrar Produto'
+              to='/produto'
+              Icon={TbFile}
+              bgColor='#696969'
+            />
+          ) : null }
+          
         </C.Acessos>
       </C.HomeBody>
       <C.Footer>
