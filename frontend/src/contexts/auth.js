@@ -159,11 +159,24 @@ export function AuthProvider({ children }) {
     return hasAbastecimento;
   }
 
+  /*      PRODUTOS      */ 
+
+  async function cadastrarProduto(nome, descricao, quantidade, valor) {
+
+    return await api.post('/produto', {
+      nome: nome,
+      descricao: descricao,
+      quantidade: quantidade,
+      valor: valor
+    }).then((res) => res.data).catch(err => console.log(err))
+
+  }
+
   return (
     <AuthContext.Provider
       value={{
         user, logado: !!user, registrar, login, signout, updateProfile,
-        getCombustiveis, abastecer, getAbastecimentos, calcularPontos
+        getCombustiveis, abastecer, getAbastecimentos, calcularPontos, cadastrarProduto
       }}
     >
       { children }

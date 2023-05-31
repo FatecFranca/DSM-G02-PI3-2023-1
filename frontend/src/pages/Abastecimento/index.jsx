@@ -73,7 +73,7 @@ function Abastecimento() {
       setErro(res);
       return;
     } else {
-      alert('Abastecimento realizado com sucesso 1');
+      alert('Abastecimento realizado com sucesso');
       setLitros('');
       setClienteCpf('');
     }

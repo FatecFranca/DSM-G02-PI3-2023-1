@@ -9,35 +9,48 @@ import Button from '../../components/Button';
 
 function Produto () {
 
-    const [nome, setNome] = useState('');
-    const [descricao, setDescricao] = useState('');
-    const [quantidade, setQuantidade] = useState('');
-    const [valor, setValor] = useState('');
-    const [adm, setAdm] = useState('');
+  const [nome, setNome] = useState('');
+  const [descricao, setDescricao] = useState('');
+  const [quantidade, setQuantidade] = useState('');
+  const [valor, setValor] = useState('');
+  const [adm, setAdm] = useState('');
    
-    const { user } = useAuth();
-    const [erro, setErro] = useState('');
-    const navigate = useNavigate();
+  const { user, cadastrarProduto } = useAuth();
+  const [erro, setErro] = useState('');
+  const navigate = useNavigate();
 
-    useEffect(() => {
+  useEffect(() => {
     
-        if (user?.tipo === 'administrador') {
-          setAdm(user);
-        } else {
-          navigate('/');
-          alert('Usuário logado não é administrador!');
+    if (user?.tipo === 'administrador') {
+      setAdm(user);
+    } else {
+      navigate('/');
+      alert('Usuário logado não é administrador!');
     }
     
-    }, [user, navigate]);
+  }, [user, navigate]);
 
-    async function handleProduto () {
+  async function handleProduto () {
+
+    const res = await cadastrarProduto(nome, descricao, quantidade, valor)
+
+    if (!res?._id) {
+      setErro(res);
+      return;
+    } else {
+      alert('Produto Cadastrado com sucesso!');
+      setNome('');
+      setDescricao('');
+      setQuantidade('');
+      setValor('');
+    }
         
-    }
+  }
    
-    return (
-        <C.Container>
-          <Header />
-          <C.Title>Cadastrar Produto</C.Title>
+  return (
+    <C.Container>
+      <Header />
+        <C.Title>Cadastrar Produto</C.Title>
           <C.AbasteForm>
     
             <Input
@@ -75,8 +88,8 @@ function Produto () {
             />
     
           </C.AbasteForm>
-          <C.BackButton to="/">Voltar</C.BackButton>
-        </C.Container>
+        <C.BackButton to="/">Voltar</C.BackButton>
+      </C.Container>
       );    
 }
 
