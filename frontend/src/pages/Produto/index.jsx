@@ -14,7 +14,8 @@ function Produto () {
   const [quantidade, setQuantidade] = useState('');
   const [valor, setValor] = useState('');
   const [adm, setAdm] = useState('');
-   
+  const [imagem, setImagem] = useState(null);
+
   const { user, cadastrarProduto } = useAuth();
   const [erro, setErro] = useState('');
   const navigate = useNavigate();
@@ -32,7 +33,20 @@ function Produto () {
 
   async function handleProduto () {
 
-    const res = await cadastrarProduto(nome, descricao, quantidade, valor)
+    if (!nome) {
+      setErro('Informe o nome do produto!');
+      return;
+    }
+
+    if (quantidade < 0) {
+      setErro('Quantidade inválida!')
+    }
+
+    if (valor < 0) {
+      setErro('Valor inválido!')
+    }
+
+    const res = await cadastrarProduto(nome, descricao, quantidade, valor, imagem)
 
     if (!res?._id) {
       setErro(res);
@@ -43,8 +57,14 @@ function Produto () {
       setDescricao('');
       setQuantidade('');
       setValor('');
+      setImagem(null);
     }
         
+  }
+
+  function handleImagemSelecionada(event) {
+    const arquivoSelecionado = event.target.files[0];
+    setImagem(arquivoSelecionado);
   }
    
   return (
@@ -78,14 +98,22 @@ function Produto () {
               value={ valor }
               onChange={ e => [setValor(e.target.value), setErro('')] }
             />
-    
-            <C.ErrorLabel>{ erro }</C.ErrorLabel>
-    
+
+            <Input
+              type="file"
+              id="upload-imagem"
+              accept="image/*"
+              style={{ display: 'none' }}
+              onChange={handleImagemSelecionada}
+            />
+
             <Button
               Text='Salvar'
               type='button'
               onClick={ handleProduto }
             />
+
+            <C.ErrorLabel>{ erro }</C.ErrorLabel>
     
           </C.AbasteForm>
         <C.BackButton to="/">Voltar</C.BackButton>

@@ -9,7 +9,6 @@ export function AuthProvider({ children }) {
 
   const [user, setUser] = useState('');
 
-
   useEffect(() => {
     // Toda vez que inicializar, verificar se há usuário logado
     const userToken = JSON.parse(localStorage.getItem('user_token'));
@@ -21,7 +20,6 @@ export function AuthProvider({ children }) {
         .catch(err => console.log(err));
     }
   }, []);
-
 
   /*          USUÁRIO           */
 
@@ -161,13 +159,14 @@ export function AuthProvider({ children }) {
 
   /*      PRODUTOS      */ 
 
-  async function cadastrarProduto(nome, descricao, quantidade, valor) {
+  async function cadastrarProduto(nome, descricao, quantidade, valor, imagem) {
 
     return await api.post('/produto', {
       nome: nome,
       descricao: descricao,
       quantidade: quantidade,
-      valor: valor
+      valor: valor,
+      imagem: imagem
     }).then((res) => res.data).catch(err => console.log(err))
 
   }

@@ -7,8 +7,7 @@ const produtoSchema = mongoose.Schema(
             required: [true, "Informe um nome"]
         },
         descricao: {
-            type: String,
-            required: [true, "Informe a descrição"]
+            type: String
         },
         valor: {
             type: Number,
