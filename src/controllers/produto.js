@@ -68,4 +68,14 @@ controller.delete = async (req, res) => {
     }
 }
 
+controller.deleteAll = async (req, res) => {
+    try {
+      await Produto.deleteMany({});
+  
+      res.status(200).json({ message: "Todos os produtos foram excluídos com sucesso" });
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+};
+
 module.exports = controller

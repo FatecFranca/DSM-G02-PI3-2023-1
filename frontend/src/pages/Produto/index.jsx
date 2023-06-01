@@ -31,6 +31,11 @@ function Produto () {
     
   }, [user, navigate]);
 
+  async function handleImagemSelecionada(event) {
+    const arquivoSelecionado = event.target.files[0];
+    setImagem(arquivoSelecionado);
+  }
+
   async function handleProduto () {
 
     if (!nome) {
@@ -60,11 +65,6 @@ function Produto () {
       setImagem(null);
     }
         
-  }
-
-  function handleImagemSelecionada(event) {
-    const arquivoSelecionado = event.target.files[0];
-    setImagem(arquivoSelecionado);
   }
    
   return (
