@@ -51,6 +51,15 @@ function Home() {
               bgColor='#696969'
             />
           ) : null }
+
+          {user?.tipo === 'administrador' ? (
+            <Acesso
+              Text='Cadastrar Usuário'
+              to='/usuario'
+              Icon={TbFile}
+              bgColor='#696969'
+            />
+          ) : null }
           
         </C.Acessos>
       </C.HomeBody>

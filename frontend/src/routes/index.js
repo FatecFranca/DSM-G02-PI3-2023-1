@@ -32,6 +32,7 @@ function RoutesApp() {
           <Route path="/abastecimentos" element={ <Logado Item={ Abastecimentos } /> } /> {/* Lista do Usuário */}
           <Route path="/perfil" element={<Logado Item={UpdateProfile} />} />
           <Route path="/produto" element={<Logado Item={Produto} />} />
+          
 
           <Route path="*" element={ <Login /> } />
         </Routes>
