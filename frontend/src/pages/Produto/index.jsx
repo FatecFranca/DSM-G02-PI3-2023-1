@@ -71,7 +71,7 @@ function Produto () {
     <C.Container>
       <Header />
         <C.Title>Cadastrar Produto</C.Title>
-          <C.AbasteForm>
+          <C.AbasteForm enctype="multipart/form-data">
     
             <Input
               placeholder='Produto'
@@ -104,7 +104,7 @@ function Produto () {
               id="upload-imagem"
               accept="image/*"
               style={{ display: 'none' }}
-              onChange={handleImagemSelecionada}
+              onChange={ handleImagemSelecionada }
             />
 
             <Button

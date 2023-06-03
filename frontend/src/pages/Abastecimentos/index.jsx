@@ -48,7 +48,7 @@ function Abastecimentos() {
           </thead>
           <tbody>
             {listaAbast.map((abastecimento) => (
-              <C.TR key={abastecimento._id}>
+              <C.TR key={ abastecimento._id }>
                 <td>{ mostrarCombustivel(abastecimento.id_combustivel) }</td>
                 <td>{ abastecimento.qtd_litros } L.</td>
                 <td>R${ abastecimento.vlr_total }</td>

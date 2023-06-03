@@ -159,7 +159,6 @@ export function AuthProvider({ children }) {
   /*      PRODUTOS      */ 
 
   async function cadastrarProduto(nome, descricao, quantidade, valor, imagem) {
-
     return await api.post('/produto', {
       nome: nome,
       descricao: descricao,

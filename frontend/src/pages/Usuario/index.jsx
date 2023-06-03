@@ -63,7 +63,7 @@ function Usuario() {
             setCpf('');
             setSenha('');
             setConfirmar('');
-          }
+        }
 
     }
 
@@ -75,8 +75,8 @@ function Usuario() {
                   <C.FormContainer>
 
                     <select
-                        value={tipo}
-                        onChange={(e) => setTipo(e.target.value)}
+                        value={ tipo }
+                        onChange={ (e) => setTipo(e.target.value) }
                         style={{ marginBottom: '20px' }}
                     >
                         <option value="">Selecione o tipo de usuário</option>

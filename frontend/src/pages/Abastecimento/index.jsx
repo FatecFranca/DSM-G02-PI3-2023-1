@@ -7,6 +7,7 @@ import Header from '../../components/Header';
 import Input from '../../components/Input';
 import InputMask from '../../components/InputMask';
 import Button from '../../components/Button';
+import ButtonMenor from '../../components/ButtonMenor';
 
 function Abastecimento() {
 
@@ -134,7 +135,7 @@ function Abastecimento() {
           onClick={ handleAbastecimento }
         />
 
-        <Button
+        <ButtonMenor
           Text='Calcular pontos!'
           type='button'
           onClick={ handleCalcularPontos }

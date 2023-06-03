@@ -2,7 +2,7 @@ import React from 'react';
 import * as C from './styles';
 
 
-function Button({ Text, type='button', fColor='#fff', bgColor='#0e7511', value, onClick }) {
+function ButtonMenor({ Text, type='button', fColor='#fff', bgColor='#0e7511', value, onClick }) {
 
   return (
     <C.Button
@@ -18,4 +18,4 @@ function Button({ Text, type='button', fColor='#fff', bgColor='#0e7511', value, 
 }
 
 
-export default Button;
+export default ButtonMenor;

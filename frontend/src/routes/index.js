@@ -31,9 +31,9 @@ function RoutesApp() {
           <Route path="/" element={ <Logado Item={ Home } /> } />
           <Route path="/abastecimento" element={ <Logado Item={ Abastecimento } /> } />   {/* Form do Frentista */}
           <Route path="/abastecimentos" element={ <Logado Item={ Abastecimentos } /> } /> {/* Lista do Usuário */}
-          <Route path="/perfil" element={<Logado Item={UpdateProfile} />} />
-          <Route path="/produto" element={<Logado Item={Produto} />} />
-          <Route path="/usuario" element={<Logado Item={Usuario} />} />
+          <Route path="/perfil" element={<Logado Item={ UpdateProfile } />} />
+          <Route path="/produto" element={<Logado Item={ Produto } />} />
+          <Route path="/usuario" element={<Logado Item={ Usuario } />} />
           
           <Route path="*" element={ <Login /> } />
         </Routes>

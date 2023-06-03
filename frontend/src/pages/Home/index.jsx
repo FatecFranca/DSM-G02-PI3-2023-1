@@ -30,7 +30,7 @@ function Home() {
           <Acesso
             Text='Meu Perfil'
             to='/perfil'
-            Icon={AiOutlineUser}
+            Icon={ AiOutlineUser }
             bgColor='#696969'
           />
 
@@ -38,7 +38,7 @@ function Home() {
             <Acesso
               Text='Abastecimento'
               to='/abastecimento'
-              Icon={TbFile}
+              Icon={ TbFile }
               bgColor='#696969'
             />
           ) : null}
@@ -47,7 +47,7 @@ function Home() {
             <Acesso
               Text='Cadastrar Produto'
               to='/produto'
-              Icon={TbFile}
+              Icon={ TbFile }
               bgColor='#696969'
             />
           ) : null }
@@ -56,7 +56,7 @@ function Home() {
             <Acesso
               Text='Cadastrar Usuário'
               to='/usuario'
-              Icon={TbFile}
+              Icon={ TbFile }
               bgColor='#696969'
             />
           ) : null }
@@ -67,20 +67,20 @@ function Home() {
 
         <Acesso
           Text='Redes Sociais'
-          Icon={TbSocial}
+          Icon={ TbSocial }
           color='#fff'
           to='https://www.facebook.com/profile.php?id=100092743341231&sk=about_life_events'
         />
         <Acesso
           Text='Onde Estamos'
-          Icon={BsGeoAlt}
+          Icon={ BsGeoAlt }
           color='#fff'
           to='https://www.google.com.br/maps/@-20.5359235,-47.3924639,15.58z?entry=ttu'
         />
 
         <Acesso
           Text='Suporte'
-          Icon={FaEnvelope}
+          Icon={ FaEnvelope }
           color='#fff'
           to='mailto:postoshiny@gmail.com'
         />
