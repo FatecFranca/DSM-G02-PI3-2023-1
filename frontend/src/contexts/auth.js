@@ -1,7 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
 import api from '../api';
 
-
 export const AuthContext = createContext({});
 
 
@@ -171,11 +170,25 @@ export function AuthProvider({ children }) {
 
   }
 
+  /*   USUARIOS INTERNOS     */
+
+  async function cadastrarUserInterno(tipo, nome, cpf, email, senha) {
+
+    return await api.post('/usuario', {
+      tipo: tipo,
+      nome: nome,
+      cpf: cpf,
+      email: email,
+      senha: senha
+    }).then((res) => res.data).catch(err => console.log(err))
+
+  }
+
   return (
     <AuthContext.Provider
       value={{
         user, logado: !!user, registrar, login, signout, updateProfile,
-        getCombustiveis, abastecer, getAbastecimentos, calcularPontos, cadastrarProduto
+        getCombustiveis, abastecer, getAbastecimentos, calcularPontos, cadastrarProduto, cadastrarUserInterno
       }}
     >
       { children }
@@ -183,4 +196,3 @@ export function AuthProvider({ children }) {
   );
 
 }
-

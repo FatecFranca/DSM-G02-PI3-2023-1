@@ -10,7 +10,128 @@ import Button from '../../components/Button';
 
 function Usuario() {
 
-  
+    const { user, cadastrarUserInterno, getTiposUsr } = useAuth();
+    const navigate = useNavigate();
+
+    const [nome, setNome] = useState('');
+    const [email, setEmail] = useState('');
+    const [cpf, setCpf] = useState('');
+    const [senha, setSenha] = useState('');
+    const [confirmar, setConfirmar] = useState('');
+    const [tipo, setTipo] = useState('');
+    const [erro, setErro] = useState('');
+    const [adm, setAdm] = useState('');
+
+    useEffect(() => {
+    
+        if (user?.tipo === 'administrador') {
+          setAdm(user);
+        } else {
+          navigate('/');
+          alert('Usuário logado não é administrador!');
+        }
+        
+    }, [user, navigate]);
+
+    async function handleRegistrar() {
+
+        if (!nome || !email || !cpf || !senha || !confirmar) {
+          setErro('Preencha todos os campos!');
+          return;
+        }
+
+        const numerosCpf = cpf.replace(/[.-]/g, '');
+        if (isNaN(+numerosCpf)) { 
+            setErro('Preencha o CPF corretamente!');
+            return;
+        }
+
+        if (senha !== confirmar) {
+            setErro('Digite as senhas corretamente!');
+            return;
+        }
+
+        const res = await cadastrarUserInterno(tipo, nome, numerosCpf, email, senha);
+
+        if (!res?._id) {
+            setErro(res);
+            return;
+        } else {
+            alert('Usuario Cadastrado com sucesso!');
+            setNome('');
+            setEmail('');
+            setCpf('');
+            setSenha('');
+            setConfirmar('');
+          }
+
+    }
+
+    return (
+        <C.RegisterContainer>
+            <Header/>
+                <C.Title>Cadastrar Usuário</C.Title>
+    
+                  <C.FormContainer>
+
+                    <select
+                        value={tipo}
+                        onChange={(e) => setTipo(e.target.value)}
+                        style={{ marginBottom: '20px' }}
+                    >
+                        <option value="">Selecione o tipo de usuário</option>
+                        <option value="administrador">Administrador</option>
+                        <option value="frentista">Frentista</option>
+                        <option value="usuário">Usuário</option>
+                    </select>
+
+                    <Input
+                        type='text'
+                        placeholder='Nome'
+                        value={ nome }
+                        onChange={ e => [setNome(e.target.value), setErro('')] }
+                    />
+
+                    <Input
+                        type='email'
+                        placeholder='exemplo@email.com'
+                        value={ email }
+                        onChange={ e => [setEmail(e.target.value), setErro('')] }
+                    />
+
+                    <InputMask
+                        mask='999.999.999-99'
+                        placeholder='CPF'
+                        value={ cpf }
+                        onChange={ e => [setCpf(e.target.value), setErro('')] }
+                    />
+
+                    <Input
+                        type='password'
+                        placeholder='Senha'
+                        value={ senha }
+                        onChange={ e => [setSenha(e.target.value), setErro('')] }
+                    />
+
+                    <Input
+                        type='password'
+                        placeholder='Confirmar senha'
+                        value={ confirmar }
+                        onChange={ e => [setConfirmar(e.target.value), setErro('')] }
+                    />
+
+                    <C.ErrorLabel>{ erro }</C.ErrorLabel>
+            
+                    <Button
+                        Text='Cadastrar'
+                        onClick={ handleRegistrar }
+                    />
+
+                </C.FormContainer>
+            <C.BackButton to="/">Voltar</C.BackButton>
+        </C.RegisterContainer>
+      );
+
 }
 
 export default Usuario;

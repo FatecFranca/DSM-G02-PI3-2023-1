@@ -23,8 +23,7 @@ const usuarioSchema = mongoose.Schema(
         tipo: {
             type: String,
             enum: ['administrador', 'frentista', 'usuario'],
-            default: 'usuario',
-            required: true
+            default: 'usuario'
         },
         pontos: {
             type: Number,
