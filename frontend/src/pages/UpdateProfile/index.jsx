@@ -6,8 +6,6 @@ import useAuth from '../../hooks/useAuth';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 
-
-
 function UpdateProfile() {
   const { updateProfile, user } = useAuth();
   const navigate = useNavigate();
@@ -63,44 +61,63 @@ function UpdateProfile() {
   }
 
   return (
-    <C.UpdateProfileContainer>
+    <C.RegisterContainer>
       <C.Title>Atualizar Perfil</C.Title>
+
       <C.FormContainer>
-        <Input
-          type="text"
-          placeholder="Nome"
-          value={ nome }
-          onChange={ (e) => [setNome(e.target.value), setErro('')] }
-        />
-        <Input
-          type="email"
-          placeholder="E-mail"
-          value={ email }
-          onChange={ (e) => [setEmail(e.target.value), setErro('')] }
-        />
-        <Input
-          type="text"
-          placeholder="CPF"
-          value={ cpf }
-          onChange={ (e) => [setCpf(e.target.value), setErro('')] }
-        />
-        <Input
-          type="password"
-          placeholder="Senha"
-          value={ senha }
-          onChange={ (e) => [setSenha(e.target.value), setErro('')] }
-        />
-        <Input
-          type="password"
-          placeholder="Confirmar senha"
-          value={ confirmar }
-          onChange={ (e) => [setConfirmar(e.target.value), setErro('')] }
-        />
-        <C.ErrorLabel>{ erro }</C.ErrorLabel>
-        <Button Text="Atualizar" onClick={ handleUpdateProfile } />
+        <C.InputBox>
+          <C.Label>Nome:</C.Label>
+          <C.Input
+            type="text"
+            placeholder="Nome"
+            value={nome}
+            onChange={(e) => [setNome(e.target.value), setErro('')]}
+          />
+        </C.InputBox>
+        <C.InputBox>
+          <C.Label>Email:</C.Label>
+          <C.Input
+            type="email"
+            placeholder="E-mail"
+            value={email}
+            onChange={(e) => [setEmail(e.target.value), setErro('')]}
+          />
+        </C.InputBox>
+        <C.InputBox>
+          <C.Label>CPF:</C.Label>
+          <C.Input
+            type="text"
+            placeholder="CPF"
+            value={cpf}
+            onChange={(e) => [setCpf(e.target.value), setErro('')]}
+          />
+        </C.InputBox>
+        <C.InputBox>
+          <C.Label>Senha:</C.Label>
+          <C.Input
+            type="password"
+            placeholder="Senha"
+            value={senha}
+            onChange={(e) => [setSenha(e.target.value), setErro('')]}
+          />
+        </C.InputBox>
+        <C.InputBox>
+          <C.Label>Confirmar Senha:</C.Label>
+          <C.Input
+            type="password"
+            placeholder="Confirmar senha"
+            value={confirmar}
+            onChange={(e) => [setConfirmar(e.target.value), setErro('')]}
+          />
+        </C.InputBox>
+        <C.ErrorLabel>{erro}</C.ErrorLabel>
+        <C.ButtonContainer>
+          <C.Button onClick={handleUpdateProfile}>Atualizar</C.Button>
+        </C.ButtonContainer>
       </C.FormContainer>
+
       <C.BackButton to="/">Voltar</C.BackButton>
-    </C.UpdateProfileContainer>
+    </C.RegisterContainer>
   );
 }
 

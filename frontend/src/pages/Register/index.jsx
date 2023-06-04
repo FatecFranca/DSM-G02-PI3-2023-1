@@ -7,9 +7,7 @@ import Input from '../../components/Input';
 import InputMask from '../../components/InputMask';
 import Button from '../../components/Button';
 
-
 function Register() {
-
   const { registrar } = useAuth();
   const navigate = useNavigate();
 
@@ -26,8 +24,8 @@ function Register() {
       return;
     }
 
-    const numerosCpf = cpf.replace(/[.-]/g, '');  // replace com expressão regular para remover os '.' e o '-' do CPF
-    if (isNaN(+numerosCpf)) {  // Verifica se o CPF foi preenchido completamente
+    const numerosCpf = cpf.replace(/[.-]/g, '');
+    if (isNaN(+numerosCpf)) {
       setErro('Preencha o CPF corretamente!');
       return;
     }
@@ -52,51 +50,62 @@ function Register() {
       <C.Title>Vamos começar?</C.Title>
 
       <C.FormContainer>
-      <Input
-          type='text'
-          placeholder='Nome'
-          value={ nome }
-          onChange={ e => [setNome(e.target.value), setErro('')] }
-        />
-        <Input
-          type='email'
-          placeholder='exemplo@email.com'
-          value={ email }
-          onChange={ e => [setEmail(e.target.value), setErro('')] }
-        />
-        <InputMask
-          mask='999.999.999-99'
-          placeholder='CPF'
-          value={ cpf }
-          onChange={ e => [setCpf(e.target.value), setErro('')] }
-        />
-        <Input
-          type='password'
-          placeholder='Senha'
-          value={ senha }
-          onChange={ e => [setSenha(e.target.value), setErro('')] }
-        />
-        <Input
-          type='password'
-          placeholder='Confirmar senha'
-          value={ confirmar }
-          onChange={ e => [setConfirmar(e.target.value), setErro('')] }
-        />
-        <C.ErrorLabel>{ erro }</C.ErrorLabel>
-        <C.LoginSpan>Já possui conta?
-          <Link to='/login'>
-            &nbsp;Entrar
-          </Link>
+        <C.InputBox>
+          <C.Label>Nome:</C.Label>
+          <C.Input
+            type='text'
+            placeholder='Nome'
+            value={nome}
+            onChange={(e) => setNome(e.target.value)}
+          />
+        </C.InputBox>
+        <C.InputBox>
+          <C.Label>Email:</C.Label>
+          <C.Input
+            type='email'
+            placeholder='exemplo@email.com'
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </C.InputBox>
+        <C.InputBox>
+          <C.Label>CPF:</C.Label>
+          <C.Input
+            type='text'
+            placeholder='CPF'
+            value={cpf}
+            onChange={(e) => setCpf(e.target.value)}
+          />
+        </C.InputBox>
+        <C.InputBox>
+          <C.Label>Senha:</C.Label>
+          <C.Input
+            type='password'
+            placeholder='Senha'
+            value={senha}
+            onChange={(e) => setSenha(e.target.value)}
+          />
+        </C.InputBox>
+        <C.InputBox>
+          <C.Label>Confirmar Senha:</C.Label>
+          <C.Input
+            type='password'
+            placeholder='Confirmar senha'
+            value={confirmar}
+            onChange={(e) => setConfirmar(e.target.value)}
+          />
+        </C.InputBox>
+        <C.ErrorLabel>{erro}</C.ErrorLabel>
+        <C.ButtonContainer>
+          <Button Text='Cadastrar' onClick={handleRegistrar} />
+        </C.ButtonContainer>
+        <C.LoginSpan>
+          Já possui conta?
+          <Link to='/login'>&nbsp;Entrar</Link>
         </C.LoginSpan>
-        <Button
-          Text='Cadastrar'
-          onClick={ handleRegistrar }
-        />
       </C.FormContainer>
     </C.RegisterContainer>
   );
-
 }
-
 
 export default Register;
