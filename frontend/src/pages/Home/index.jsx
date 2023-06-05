@@ -60,6 +60,15 @@ function Home() {
               bgColor='#696969'
             />
           ) : null }
+
+          {user?.tipo === 'administrador' ? (
+            <Acesso
+              Text='Cadastrar Combustível'
+              to='/combustivel'
+              Icon={ TbFile }
+              bgColor='#696969'
+            />
+          ) : null}
           
         </C.Acessos>
       </C.HomeBody>
