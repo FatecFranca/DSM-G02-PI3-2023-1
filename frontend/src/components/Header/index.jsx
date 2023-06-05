@@ -23,7 +23,7 @@ function Header() {
   return (
     <C.Header>
     <a href="/">
-        <img src={logoImg} alt="Logo" style={{ width: '100px', height: '100px' }} />
+        <img src={logoImg} alt="Logo" style={{ height: '100px' }} />
       </a>
       <C.Actions>
         {/* Ícone de notificação que ainda não vai funcionar por enquanto */}
