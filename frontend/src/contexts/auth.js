@@ -101,6 +101,16 @@ export function AuthProvider({ children }) {
     return hasCombustiveis;
   }
 
+  async function cadastrarCombustivel(combustivel, valor, pontos) {
+
+    return await api.post('/combustivel', {
+      tipo_combustivel: combustivel,
+      vlr_litro: valor,
+      pts_real_abastecido: pontos
+    }).then((res) => res.data).catch(err => console.log(err))
+
+  }
+
 
   /*          ABASTECIMENTO            */
 
@@ -187,7 +197,7 @@ export function AuthProvider({ children }) {
     <AuthContext.Provider
       value={{
         user, logado: !!user, registrar, login, signout, updateProfile,
-        getCombustiveis, abastecer, getAbastecimentos, calcularPontos, cadastrarProduto, cadastrarUserInterno
+        getCombustiveis, abastecer, getAbastecimentos, calcularPontos, cadastrarProduto, cadastrarUserInterno, cadastrarCombustivel
       }}
     >
       { children }
