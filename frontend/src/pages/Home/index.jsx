@@ -10,9 +10,7 @@ import useAuth from '../../hooks/useAuth';
 import Header from '../../components/Header';
 import Acesso from './components/Acesso';
 
-
 function Home() {
-
   const { user } = useAuth();
 
   useEffect(() => {
@@ -26,70 +24,60 @@ function Home() {
       <Header />
       <C.HomeBody>
         <C.Acessos>
-
           <Acesso
-            Text='Meu Perfil'
-            to='/perfil'
-            Icon={ AiOutlineUser }
-            bgColor='#696969'
+            Text="Meu Perfil"
+            to="/perfil"
+            Icon={AiOutlineUser}
+            bgColor="#2C3E50"
           />
-
           {user?.tipo === 'frentista' || user?.tipo === 'administrador' ? (
             <Acesso
-              Text='Abastecimento'
-              to='/abastecimento'
-              Icon={ TbFile }
-              bgColor='#696969'
+              Text="Abastecimento"
+              to="/abastecimento"
+              Icon={TbFile}
+              bgColor="#2C3E50"
             />
           ) : null}
-
           {user?.tipo === 'administrador' ? (
             <Acesso
-              Text='Cadastrar Produto'
-              to='/produto'
-              Icon={ TbFile }
-              bgColor='#696969'
+              Text="Cadastrar Produto"
+              to="/produto"
+              Icon={TbFile}
+              bgColor="#2C3E50"
             />
-          ) : null }
-
+          ) : null}
           {user?.tipo === 'administrador' ? (
             <Acesso
-              Text='Cadastrar Usuário'
-              to='/usuario'
-              Icon={ TbFile }
-              bgColor='#696969'
+              Text="Cadastrar Usuário"
+              to="/usuario"
+              Icon={TbFile}
+              bgColor="#2C3E50"
             />
-          ) : null }
-          
+          ) : null}
         </C.Acessos>
       </C.HomeBody>
       <C.Footer>
-
         <Acesso
-          Text='Redes Sociais'
-          Icon={ TbSocial }
-          color='#fff'
-          to='https://www.facebook.com/profile.php?id=100092743341231&sk=about_life_events'
+          Text="Redes Sociais"
+          Icon={TbSocial}
+          color="#fff"
+          to="https://www.facebook.com/profile.php?id=100092743341231&sk=about_life_events"
         />
         <Acesso
-          Text='Onde Estamos'
-          Icon={ BsGeoAlt }
-          color='#fff'
-          to='https://www.google.com.br/maps/@-20.5359235,-47.3924639,15.58z?entry=ttu'
+          Text="Onde Estamos"
+          Icon={BsGeoAlt}
+          color="#fff"
+          to="https://www.google.com.br/maps/@-20.5359235,-47.3924639,15.58z?entry=ttu"
         />
-
         <Acesso
-          Text='Suporte'
-          Icon={ FaEnvelope }
-          color='#fff'
-          to='mailto:postoshiny@gmail.com'
+          Text="Suporte"
+          Icon={FaEnvelope}
+          color="#fff"
+          to="mailto:postoshiny@gmail.com"
         />
-        { /* Essa tela na verdade vai ser a listagem de abastecimentos, mas por enquanto vai ser a de cadastro de abastecimento para teste */}
-
       </C.Footer>
     </C.HomeContainer>
   );
-
 }
 
 export default Home;

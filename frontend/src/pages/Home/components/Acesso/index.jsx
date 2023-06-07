@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import * as C from './styles';
 
 
-function Acesso({ Text, Icon, iconColor='#fff', color='#222', bgColor='transparent', to='/' }) {
+function Acesso({ Text, Icon, iconColor='#fff', color='', bgColor='transparent', to='/' }) {
 
   return (
     <C.Container>

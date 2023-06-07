@@ -14,11 +14,11 @@ export const HomeBody = styled.div`
   text-align: center;
   align-items: center;
 
-  min-height: 45vh;
-  padding: 2rem 0;
+  min-height: 53vh;
+  padding: 1rem;
 
   color: #222;
-  background-color: #F7EDE2; /* Tom de bege suave */
+  background-color: #E0F2F1; /* Turquesa claro */
 `;
 
 export const Acessos = styled.div`
@@ -33,7 +33,7 @@ export const Footer = styled.footer`
   display: flex;
   justify-content: space-around;
 
-  padding: 2rem;
+  padding: 1rem;
 
   color: #fff;
   background-color: #7C9885; /* Verde claro */
