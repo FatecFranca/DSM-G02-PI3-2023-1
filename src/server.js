@@ -48,49 +48,6 @@ app.get('/cadastro', (req, res) => {
     res.render('cadastro')
 })
 
-function validarCPF(cpf) {
-    if (cpf.toString().length !== 11) {
-      return false;
-    }
-  
-    if (/^(\d)\1+$/.test(cpf.toString())) {
-      return false;
-    }
-  
-    let soma = 0;
-    let resto;
-  
-    for (let i = 1; i <= 9; i++) {
-      soma = soma + Math.floor(cpf / Math.pow(10, 10 - i)) % 10 * (11 - i);
-    }
-  
-    resto = (soma * 10) % 11;
-  
-    if (resto === 10 || resto === 11) {
-      resto = 0;
-    }
-  
-    if (resto !== Math.floor(cpf / Math.pow(10, 9)) % 10) {
-      return false;
-    }
-  
-    soma = 0;
-    for (let i = 1; i <= 10; i++) {
-      soma = soma + Math.floor(cpf / Math.pow(10, 11 - i)) % 10 * (12 - i);
-    }
-  
-    resto = (soma * 10) % 11;
-  
-    if (resto === 10 || resto === 11) {
-      resto = 0;
-    }
-  
-    if (resto !== Math.floor(cpf / Math.pow(10, 10)) % 10) {
-      return false;
-    }
-  
-    return true;
-  }  
 
 app.get('/adicionar-abastecimento', async (req, res) => {
     try {
@@ -185,6 +142,10 @@ app.use('/produto', produtoRouter)
 // Combustíveis
 const combustivelRouter = require('./routes/combustivel')
 app.use('/combustivel', combustivelRouter)
+
+// Resgate Produto
+const resgateRouter = require('./controllers/resgate');
+app.use('/resgate', resgateRouter);
 
 // Abastecimentos
 const abastecimentoRouter = require('./routes/abastecimento');
