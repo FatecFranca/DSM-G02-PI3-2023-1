@@ -55,6 +55,15 @@ function Home() {
               bgColor='#696969'
             />
           ) : null}
+
+          {user?.tipo === 'usuario' ? (
+            <Acesso
+              Text='Abastecimentos'
+              to='/abastecimentos'
+              Icon={ TbFile }
+              bgColor='#696969'
+            />
+          ) : null}
           
         </C.Acessos>
       </C.HomeBody>

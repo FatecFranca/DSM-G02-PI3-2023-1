@@ -4,6 +4,7 @@ export const HomeContainer = styled.div`
   display: flex;
   flex-direction: column;
 
+  background-color: #f3f3f3;
   height: 100%;
   width: 100%;
 `;
@@ -14,7 +15,7 @@ export const HomeBody = styled.div`
   text-align: center;
   align-items: center;
 
-  min-height: 53vh;
+  min-height: 80vh;
   padding: 1rem;
 
   color: #222;
@@ -32,8 +33,13 @@ export const Acessos = styled.div`
 export const Footer = styled.footer`
   display: flex;
   justify-content: space-around;
+  position: absolute;
 
   padding: 1rem;
+  width: 100%;
+
+  bottom: 0;
+  left: 0;
 
   color: #fff;
   background-color: #7C9885; /* Verde claro */

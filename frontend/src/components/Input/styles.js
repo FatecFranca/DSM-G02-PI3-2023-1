@@ -2,18 +2,19 @@ import styled from 'styled-components';
 
 
 export const Input = styled.input`
-  font-size: 1rem;
-  margin: 1rem 0;
+  padding: 0.6rem;
+  border: 1px solid #000;
+  border-radius: 14px;
 
-  background-color: transparent;
-  color: #fff;
+  color: #000;
 
-  width: 80%;
-
+  width: 100%;
+  text-align: center;
   outline: none;
-  border: none;
-  border-radius: 6px;
-  border-bottom: 2px #fff solid;
-  padding: 10px 16px;
 `;
 
+export const InputBox = styled.div`
+  width: 100%;
+  margin-bottom: 1.5rem;
+  text-align: center;
+`;

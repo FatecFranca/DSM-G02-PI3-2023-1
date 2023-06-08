@@ -127,8 +127,8 @@ function Usuario() {
                         onClick={ handleRegistrar }
                     />
 
-                </C.FormContainer>
-            <C.BackButton to="/">Voltar</C.BackButton>
+                <C.BackButton to="/">Voltar</C.BackButton>
+            </C.FormContainer>
         </C.RegisterContainer>
       );
 

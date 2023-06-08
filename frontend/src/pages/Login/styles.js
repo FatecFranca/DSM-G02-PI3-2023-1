@@ -19,7 +19,7 @@ export const FormContainer = styled.div`
   flex-direction: column;
   align-items: center;
   background-color: #fff;
-  padding: 10rem;
+  padding: 4rem 10rem;
   border-radius: 18px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 `;
@@ -30,14 +30,14 @@ export const InputBox = styled.div`
   text-align: center;
 `;
 
-export const Input = styled.input`
-  width: 100%;
-  padding: 0.8rem;
-  border: 1px solid #000;
-  border-radius: 14px;
-  color: #000;
-  text-align: center;
-`;
+// export const Input = styled.input` // Está sendo utilizado no component
+//   width: 100%;
+//   padding: 0.8rem;
+//   border: 1px solid #000;
+//   border-radius: 14px;
+//   color: #000;
+//   text-align: center;
+// `;
 
 export const ErrorLabel = styled.span`
   margin-bottom: 1.5rem;
@@ -69,6 +69,7 @@ export const Button = styled.button`
 
 export const RegisterSpan = styled.span`
   font-size: 14px;
+  color: #000;
 
   & a {
     color: #0a53b2;

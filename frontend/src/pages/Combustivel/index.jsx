@@ -67,7 +67,7 @@ function Combustivel () {
                     <C.FormContainer>
                         <C.InputBox>
                         <C.Label>Combustivel:</C.Label>
-                            <C.Input
+                            <Input
                                 type="text"
                                 placeholder="Combustível"
                                 value={ combustivel }
@@ -77,7 +77,7 @@ function Combustivel () {
 
                         <C.InputBox>
                         <C.Label>Valor Litro:</C.Label>
-                            <C.Input
+                            <Input
                                 type="number"
                                 placeholder="Valor Litro"
                                 value={ valor }
@@ -87,7 +87,7 @@ function Combustivel () {
 
                         <C.InputBox>
                         <C.Label>Pontos por real abastecido:</C.Label>
-                            <C.Input
+                            <Input
                                 type="number"
                                 placeholder="Pontos por Real Abastecido"
                                 value={ pontos }
@@ -101,8 +101,8 @@ function Combustivel () {
                             <C.Button onClick={ handleCombustivel } > Cadastrar! </C.Button>
                         </C.ButtonContainer>
 
-                    </C.FormContainer>
-                <C.BackButton to="/">Voltar</C.BackButton>
+                    <C.BackButton to="/">Voltar</C.BackButton>
+                </C.FormContainer>
         </C.RegisterContainer>
     );
 }

@@ -65,58 +65,58 @@ function UpdateProfile() {
       <C.Title>Atualizar Perfil</C.Title>
 
       <C.FormContainer>
-        <C.InputBox>
+        {/* <C.InputBox> */}
           <C.Label>Nome:</C.Label>
-          <C.Input
+          <Input
             type="text"
             placeholder="Nome"
             value={nome}
             onChange={(e) => [setNome(e.target.value), setErro('')]}
           />
-        </C.InputBox>
-        <C.InputBox>
+        {/* </C.InputBox>
+        <C.InputBox> */}
           <C.Label>Email:</C.Label>
-          <C.Input
+          <Input
             type="email"
             placeholder="E-mail"
             value={email}
             onChange={(e) => [setEmail(e.target.value), setErro('')]}
           />
-        </C.InputBox>
-        <C.InputBox>
+        {/* </C.InputBox>
+        <C.InputBox> */}
           <C.Label>CPF:</C.Label>
-          <C.Input
+          <Input
             type="text"
             placeholder="CPF"
             value={cpf}
             onChange={(e) => [setCpf(e.target.value), setErro('')]}
           />
-        </C.InputBox>
-        <C.InputBox>
+        {/* </C.InputBox>
+        <C.InputBox> */}
           <C.Label>Senha:</C.Label>
-          <C.Input
+          <Input
             type="password"
             placeholder="Senha"
             value={senha}
             onChange={(e) => [setSenha(e.target.value), setErro('')]}
           />
-        </C.InputBox>
-        <C.InputBox>
+        {/* </C.InputBox>
+        <C.InputBox> */}
           <C.Label>Confirmar Senha:</C.Label>
-          <C.Input
+          <Input
             type="password"
             placeholder="Confirmar senha"
             value={confirmar}
             onChange={(e) => [setConfirmar(e.target.value), setErro('')]}
           />
-        </C.InputBox>
+        {/* </C.InputBox> */}
         <C.ErrorLabel>{erro}</C.ErrorLabel>
         <C.ButtonContainer>
           <C.Button onClick={handleUpdateProfile}>Atualizar</C.Button>
         </C.ButtonContainer>
+        <C.BackButton to="/">Voltar</C.BackButton>
       </C.FormContainer>
 
-      <C.BackButton to="/">Voltar</C.BackButton>
     </C.RegisterContainer>
   );
 }

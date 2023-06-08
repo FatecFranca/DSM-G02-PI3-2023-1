@@ -140,8 +140,8 @@ function Abastecimento() {
           type='button'
           onClick={ handleCalcularPontos }
         />
+        <C.BackButton to="/">Voltar</C.BackButton>
       </C.AbasteForm>
-      <C.BackButton to="/">Voltar</C.BackButton>
     </C.Container>
   );
 

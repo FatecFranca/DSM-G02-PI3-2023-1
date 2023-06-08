@@ -14,13 +14,15 @@ import * as C from './styles';
 function InputMask({ mask, value, placeholder, onChange }) {
 
   return (
-    <C.MaskInput
-      type='text'
-      mask={mask}
-      value={value}
-      placeholder={placeholder}
-      onChange={onChange}
-    /> 
+    <C.InputBox>
+      <C.MaskInput
+        type='text'
+        mask={mask}
+        value={value}
+        placeholder={placeholder}
+        onChange={onChange}
+      /> 
+    </C.InputBox>
   );
 
 }

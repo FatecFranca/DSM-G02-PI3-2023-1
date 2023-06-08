@@ -35,22 +35,22 @@ function Login() {
       <C.Title>Faça seu Login!</C.Title>
 
       <C.FormContainer>
-        <C.InputBox>
-          <C.Input
+        {/* <C.InputBox> */}
+          <Input
             type='email'
             placeholder='Email'
             value={email}
             onChange={(e) => [setEmail(e.target.value), setErro('')]}
           />
-        </C.InputBox>
-        <C.InputBox>
-          <C.Input
+        {/* </C.InputBox>
+        <C.InputBox> */}
+          <Input
             type='password'
             placeholder='Senha'
             value={senha}
             onChange={(e) => [setSenha(e.target.value), setErro('')]}
           />
-        </C.InputBox>
+        {/* </C.InputBox> */}
         <C.ErrorLabel>{erro}</C.ErrorLabel>
         <C.ButtonContainer>
           <Button Text='Entrar' onClick={handleLogin} />

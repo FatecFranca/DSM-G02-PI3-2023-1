@@ -7,8 +7,6 @@ export const RegisterContainer = styled.div`
 
   text-align: center;
   align-items: center;
-
-  padding: 3em;
 `;
 
 export const Title = styled.h2`
@@ -23,6 +21,14 @@ export const FormContainer = styled.div`
   align-items: center;
 
   width: 50%;
+
+  & {
+    select {
+      width: 100%;
+      padding: 0.2rem;
+      border-radius: 14px;
+    }
+  }
 `;
 
 export const LoginSpan = styled.span`

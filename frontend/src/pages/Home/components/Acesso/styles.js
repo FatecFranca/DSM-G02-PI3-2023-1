@@ -20,6 +20,8 @@ export const iconAcesso = styled.div`
 
 export const labelAcesso = styled.label`
   font-weight: bold;
+  margin: 0;
+  padding: 0;
 
   color: ${ props => props.color };
 

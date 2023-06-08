@@ -6,7 +6,7 @@ export const Action = styled.button`
   border: 0;
 
   background-color: transparent;
-  color: #fff;
+  color: #222;
 
   margin-left: 1rem;
 

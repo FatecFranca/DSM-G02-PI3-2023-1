@@ -12,7 +12,8 @@ export const Container = styled.div`
 
 
 export const Title = styled.h2`
-  margin-bottom: 6vh;
+  margin-bottom: 1.4rem;
+  margin-top: 1.2rem;
 `;
 
 

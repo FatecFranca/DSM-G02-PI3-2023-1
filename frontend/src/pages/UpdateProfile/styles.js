@@ -20,23 +20,24 @@ export const FormContainer = styled.div`
   flex-direction: column;
   align-items: center;
   background-color: #fff;
-  padding: 5em;
+  width: 60vw;
+  padding: 3rem 5rem;
   border-radius: 18px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
-export const InputBox = styled.div`
-  width: 100%;
-  margin-bottom: 1.5rem;
-`;
+// export const InputBox = styled.div`
+//   width: 100%;
+//   margin-bottom: 1.5rem;
+// `;
 
-export const Input = styled.input`
-  width: 100%;
-  padding: 0.8rem;
-  border: 1px solid #000;
-  border-radius: 14px;
-  color: #000;
-`;
+// export const Input = styled.input`
+//   width: 100%;
+//   padding: 0.8rem;
+//   border: 1px solid #000;
+//   border-radius: 14px;
+//   color: #000;
+// `;
 
 export const ErrorLabel = styled.span`
   margin-bottom: 1.5rem;
@@ -47,7 +48,7 @@ export const ErrorLabel = styled.span`
 
 export const ButtonContainer = styled.div`
   width: 100%;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   display: flex;
   justify-content: center;
 `;
@@ -87,7 +88,7 @@ export const Label = styled.label`
 export const BackButton = styled(Link)`
   color: #333;
   text-decoration: none;
-  margin-top: 2rem;
+  margin-top: 1rem;
 
   &:hover {
     color: #0a53b2;

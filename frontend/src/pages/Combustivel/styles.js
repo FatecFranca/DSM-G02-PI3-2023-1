@@ -6,12 +6,12 @@ export const RegisterContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
   background-color: #f3f3f3;
 `;
 
 export const Title = styled.h2`
-  margin-bottom: 2rem;
+  margin-top: 1.2rem;
+  margin-bottom: 1.8rem;
   color: #333;
 `;
 
@@ -20,14 +20,15 @@ export const FormContainer = styled.div`
   flex-direction: column;
   align-items: center;
   background-color: #fff;
-  padding: 5em;
+  width: 60vw;
+  padding: 3rem 5rem;
   border-radius: 18px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
 export const InputBox = styled.div`
   width: 100%;
-  margin-bottom: 1.5rem;
+  /* margin-bottom: 1.5rem; */
 `;
 
 export const Input = styled.input`
@@ -47,7 +48,7 @@ export const ErrorLabel = styled.span`
 
 export const ButtonContainer = styled.div`
   width: 100%;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
   display: flex;
   justify-content: center;
 `;

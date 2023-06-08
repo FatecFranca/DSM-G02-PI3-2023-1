@@ -11,12 +11,16 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     // Toda vez que inicializar, verificar se há usuário logado
     const userToken = JSON.parse(localStorage.getItem('user_token'));
+    const currenteTime = new Date().getTime();
 
-    if (userToken) {
+    // Verifica se a expiração está no prazo, se não ele remove o usuário para não logar automaticamente
+    if (userToken && userToken.expira > currenteTime) {
       api.get('/usuario')
         .then(res => res.data.find(u => u.email === userToken.email))
         .then(u => setUser(u))
         .catch(err => console.log(err));
+    } else {
+      localStorage.removeItem('user_token');
     }
   }, []);
 
@@ -42,7 +46,8 @@ export function AuthProvider({ children }) {
       // Gera um token e coloca no localstorage
       const token = Math.random().toString(36).substring(2);
       const Email = res.data.email;
-      localStorage.setItem('user_token', JSON.stringify({ Email, token }));
+      const expira = new Date().getTime() + 600000;
+      localStorage.setItem('user_token', JSON.stringify({ Email, token, expira }));
       // Cadastro do usuário completo
       setUser(res.data);
     }).catch(err => console.log(err));
@@ -59,7 +64,8 @@ export function AuthProvider({ children }) {
     if (hasUser) {
       // Verifica se exite usuário e coloca no localstorage  
       const token = Math.random().toString(36).substring(2);
-      localStorage.setItem('user_token', JSON.stringify({ email, token }))
+      const expira = new Date().getTime() + 600000;
+      localStorage.setItem('user_token', JSON.stringify({ email, token, expira }))
       setUser(hasUser);
     } else {
       return 'Email ou senha incorreto!';
@@ -76,7 +82,8 @@ export function AuthProvider({ children }) {
       alert('Cadastro atualizado com sucesso!');
       const token = Math.random().toString(36).substring(2);
       const Email = res.data.email;
-      localStorage.setItem('user_token', JSON.stringify({ email: Email, token }))
+      const expira = new Date().getTime() + 600000;
+      localStorage.setItem('user_token', JSON.stringify({ email: Email, token, expira }))
       setUser(await res.data);
     }).catch(err => {
       alert('Algo de errado ao atualizar o cadastro aconteceu!');
