@@ -18,9 +18,8 @@ const produtoSchema = mongoose.Schema(
             required: [true, "Informe a quantidade"],
             default: 0
         },
-        imagem: {
-            data: Buffer,
-            contentType: String
+        imagem:{
+            type: String
         }
     },
     {

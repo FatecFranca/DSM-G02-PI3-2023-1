@@ -1,8 +1,9 @@
 const express = require('express')
 const router  = express.Router()
 const controller = require('../controllers/produto')
+const upload = require("../config/multer")
 
-router.post('/', controller.create)
+router.post('/', upload.single('file'), controller.create)
 router.get('/', controller.retrieveAll)
 router.get('/:id', controller.retrieveOne)
 router.put('/:id', controller.update)

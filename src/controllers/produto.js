@@ -1,12 +1,29 @@
 const Produto = require('../models/produto')
 const controller = {}
+const fs = require("fs")
 
 controller.create = async (req, res) => {
     try {
-        const produto = await Produto.create(req.body);
-        res.status(200).json(produto);
-    }
-    catch(error) {
+
+        const { nome } = req.body
+        const { descricao } = req.body
+        const { valor } = req.body
+        const { quantidade } = req.body
+        const file = req.file
+
+        const produto = new Produto ({
+            nome,
+            descricao,
+            valor,
+            quantidade,
+            imagem: file.path
+        })
+
+        await produto.save()
+
+        res.json({produto, msg: "Produto salvo com sucesso!"})
+
+    } catch(error) {
         console.log(error.message);
         res.status(500).json({ message: error.message });
     }
@@ -36,12 +53,10 @@ controller.update = async (req, res) => {
         const {id} = req.params
         const produto = await Produto.findByIdAndUpdate(id, req.body)
 
-        // se não encontrou um id correspondente
         if(!produto){
             return res.status(404).json({message: `Produto não encontrado`})
         }
 
-        // se encontrou
         const produtoAtualizado = await Produto.findById(id)
         res.status(200).json(produtoAtualizado)
 
@@ -52,17 +67,17 @@ controller.update = async (req, res) => {
 
 controller.delete = async (req, res) => {
     try {
+        
         const {id} = req.params
         const produto = await Produto.findByIdAndDelete(id)
+        fs.unlinkSync(produto.imagem)
 
-        // se não encontrou um id correspondente
         if(!produto){
             return res.status(404).json({message: `Produto não encontrado`})
         }
-        
-        // se encontrou
-        res.status(200).json(produto)
 
+        res.status(200).json(produto)
+        
     } catch (error) {
         res.status(500).json({message: error.message})
     }
