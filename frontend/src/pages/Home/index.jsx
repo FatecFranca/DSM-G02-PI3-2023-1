@@ -52,7 +52,7 @@ function Home() {
               Text='Cadastrar Combustível'
               to='/combustivel'
               Icon={ TbFile }
-              bgColor='#696969'
+              bgColor='#2C3E50'
             />
           ) : null}
 
@@ -61,7 +61,7 @@ function Home() {
               Text='Abastecimentos'
               to='/abastecimentos'
               Icon={ TbFile }
-              bgColor='#696969'
+              bgColor='#2C3E50'
             />
           ) : null}
           
