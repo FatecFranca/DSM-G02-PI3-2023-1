@@ -9,14 +9,13 @@ controller.create = async (req, res) => {
         const { descricao } = req.body
         const { valor } = req.body
         const { quantidade } = req.body
-        const file = req.file
+        
 
         const produto = new Produto ({
             nome,
             descricao,
             valor,
             quantidade,
-            imagem: file.path
         })
 
         await produto.save()

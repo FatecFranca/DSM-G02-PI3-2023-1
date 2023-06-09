@@ -17,9 +17,6 @@ const produtoSchema = mongoose.Schema(
             type: Number,
             required: [true, "Informe a quantidade"],
             default: 0
-        },
-        imagem:{
-            type: String
         }
     },
     {
