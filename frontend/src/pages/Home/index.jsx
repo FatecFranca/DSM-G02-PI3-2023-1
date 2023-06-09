@@ -64,6 +64,15 @@ function Home() {
               bgColor='#2C3E50'
             />
           ) : null}
+
+          {user?.tipo === 'usuario' || user?.tipo === 'administrador' ? (
+            <Acesso
+              Text='Resgatar Produtos'
+              to='/resgate-produto'
+              Icon={ TbFile }
+              bgColor='#2C3E50'
+            />
+          ) : null}
           
         </C.Acessos>
       </C.HomeBody>

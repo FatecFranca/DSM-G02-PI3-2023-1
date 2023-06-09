@@ -9,9 +9,10 @@ import Home from '../pages/Home';
 import Abastecimento from "../pages/Abastecimento";
 import Abastecimentos from "../pages/Abastecimentos";
 import UpdateProfile from "../pages/UpdateProfile";
-import Produto from "../pages/Produto"
-import Usuario from "../pages/Usuario"
-import Combustivel from "../pages/Combustivel"
+import Produto from "../pages/Produto";
+import Usuario from "../pages/Usuario";
+import Combustivel from "../pages/Combustivel";
+import ResgateProdutos from "../pages/ResgateProdutos";
 
 function Logado({ Item }) {
   // Autenticação se está logado
@@ -36,6 +37,7 @@ function RoutesApp() {
           <Route path="/produto" element={<Logado Item={ Produto } />} />
           <Route path="/usuario" element={<Logado Item={ Usuario } />} />
           <Route path="/combustivel" element={<Logado Item={ Combustivel } />} />
+          <Route path="/resgate-produto" element={<Logado Item={ ResgateProdutos } />} />
           
           <Route path="*" element={ <Login /> } />
         </Routes>

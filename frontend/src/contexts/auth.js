@@ -186,6 +186,12 @@ export function AuthProvider({ children }) {
 
   }
 
+  async function getProdutos() {
+    return await api.get('/produto')
+      .then(res => res.data)
+      .catch(err => console.log(err));
+  }
+
   /*   USUARIOS INTERNOS     */
 
   async function cadastrarUserInterno(tipo, nome, cpf, email, senha) {
@@ -200,11 +206,31 @@ export function AuthProvider({ children }) {
 
   }
 
+  /*    RESGATE DE PRODUTO       */
+
+  async function resgate(id_usuario, id_produto) {
+    await api.post('/resgate', {
+      usuarioId: id_usuario,
+      produtoId: id_produto
+    }).then(res => {
+      alert('Resgate do produto realizado com sucesso!');
+      return res.data;
+    }).catch(err => {
+      if (err.data?.message) {
+        alert(err.data?.message);
+      } else {
+        console.log(err);
+      }
+    });
+  }
+
   return (
     <AuthContext.Provider
       value={{
         user, logado: !!user, registrar, login, signout, updateProfile,
-        getCombustiveis, abastecer, getAbastecimentos, calcularPontos, cadastrarProduto, cadastrarUserInterno, cadastrarCombustivel
+        getCombustiveis, abastecer, getAbastecimentos, calcularPontos,
+        cadastrarProduto, cadastrarUserInterno, cadastrarCombustivel,
+        getProdutos, resgate
       }}
     >
       { children }
