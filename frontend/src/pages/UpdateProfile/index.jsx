@@ -4,7 +4,7 @@ import * as C from './styles';
 
 import useAuth from '../../hooks/useAuth';
 import Input from '../../components/Input';
-import Button from '../../components/Button';
+// import Button from '../../components/Button';
 
 function UpdateProfile() {
   const { updateProfile, user } = useAuth();

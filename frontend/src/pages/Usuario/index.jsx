@@ -10,7 +10,7 @@ import Button from '../../components/Button';
 
 function Usuario() {
 
-    const { user, cadastrarUserInterno, getTiposUsr } = useAuth();
+    const { user, cadastrarUserInterno } = useAuth();
     const navigate = useNavigate();
 
     const [nome, setNome] = useState('');
@@ -20,7 +20,7 @@ function Usuario() {
     const [confirmar, setConfirmar] = useState('');
     const [tipo, setTipo] = useState('');
     const [erro, setErro] = useState('');
-    const [adm, setAdm] = useState('');
+    const [adm, setAdm] = useState();
 
     useEffect(() => {
     
