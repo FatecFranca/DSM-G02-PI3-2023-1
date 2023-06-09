@@ -144,7 +144,7 @@ const combustivelRouter = require('./routes/combustivel')
 app.use('/combustivel', combustivelRouter)
 
 // Resgate Produto
-const resgateRouter = require('./controllers/resgate');
+const resgateRouter = require('./routes/resgate');
 app.use('/resgate', resgateRouter);
 
 // Abastecimentos
