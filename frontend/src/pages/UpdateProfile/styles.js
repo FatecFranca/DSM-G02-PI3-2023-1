@@ -11,6 +11,7 @@ export const RegisterContainer = styled.div`
 `;
 
 export const Title = styled.h2`
+  margin-top: 2rem;
   margin-bottom: 2rem;
   color: #333;
 `;
@@ -21,23 +22,10 @@ export const FormContainer = styled.div`
   align-items: center;
   background-color: #fff;
   width: 60vw;
-  padding: 3rem 5rem;
+  padding: 3rem;
   border-radius: 18px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 `;
-
-// export const InputBox = styled.div`
-//   width: 100%;
-//   margin-bottom: 1.5rem;
-// `;
-
-// export const Input = styled.input`
-//   width: 100%;
-//   padding: 0.8rem;
-//   border: 1px solid #000;
-//   border-radius: 14px;
-//   color: #000;
-// `;
 
 export const ErrorLabel = styled.span`
   margin-bottom: 1.5rem;
@@ -48,23 +36,32 @@ export const ErrorLabel = styled.span`
 
 export const ButtonContainer = styled.div`
   width: 100%;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   display: flex;
   justify-content: center;
 `;
 
 export const Button = styled.button`
-  width: 140px;
-  padding: 0.75rem;
-  background-color: #333;
+  width: 75%;
+  max-width: 360px;
+
+  background-color: #0e7511;
   color: #fff;
-  border: none;
-  border-radius: 4px;
+
+  font-weight: 600;
+  font-size: larger;
+
   cursor: pointer;
 
+  border: none;
+  border-radius: 6px;
+  margin: 2rem;
+  padding: 16px 18px;
+
   &:hover {
-    background-color: #0a53b2;
-  }
+    background-color: ${ props => props.fColor };
+    color: ${ props => props.bgColor };
+}
 `;
 
 export const LoginSpan = styled.span`
@@ -86,11 +83,7 @@ export const Label = styled.label`
 `;
 
 export const BackButton = styled(Link)`
-  color: #333;
+  margin-top: 2em;
   text-decoration: none;
-  margin-top: 1rem;
-
-  &:hover {
-    color: #0a53b2;
-  }
+  color: #7C9885;
 `;

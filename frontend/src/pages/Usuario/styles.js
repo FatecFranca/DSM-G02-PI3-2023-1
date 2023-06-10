@@ -10,25 +10,19 @@ export const RegisterContainer = styled.div`
 `;
 
 export const Title = styled.h2`
-  margin-top: 2vh;
-  margin-bottom: 6vh;
+  margin-top: 3vh;
+  margin-bottom: 3vh;
 `;
 
 export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
-  
   align-items: center;
-
-  width: 50%;
-
-  & {
-    select {
-      width: 100%;
-      padding: 0.2rem;
-      border-radius: 14px;
-    }
-  }
+  background-color: #fff;
+  width: 60vw;
+  padding: 3rem 5rem;
+  border-radius: 18px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
 export const LoginSpan = styled.span`
@@ -66,11 +60,11 @@ export const BackButton = styled(Link)`
 `;
 
 export const Select = styled.select`
-  width: 80%;
+  width: 100%;
 
   /*       top    right  bottom left */
   padding: 0.4rem 1.6rem 0.4rem 0.8rem;
-  margin-bottom: 0.1rem;
-  border: 0;
+  margin-bottom: 1.5rem;
+  border: 1px solid #000;
   border-radius: 16rem;
 `;

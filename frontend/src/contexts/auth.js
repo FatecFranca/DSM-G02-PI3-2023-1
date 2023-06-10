@@ -137,7 +137,7 @@ export function AuthProvider({ children }) {
     const valorTotal = +(+litros * +combustivel.vlr_litro).toFixed(2);
     const pontosTotal = +(+litros * +combustivel.pts_real_abastecido).toFixed(2);
 
-    cliente.pontos += pontosTotal
+    cliente.pontos += pontosTotal    
 
     await api.put(`usuario/${cliente._id}`, cliente)
       .catch(err => console.log(err))

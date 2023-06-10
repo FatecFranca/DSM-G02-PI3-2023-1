@@ -11,15 +11,19 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.h2`
-  margin-bottom: 6vh;
+  margin-top: 3vh;
+  margin-bottom: 3vh;
 `;
 
 export const AbasteForm = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  width: 50%;
+  background-color: #fff;
+  width: 60vw;
+  padding: 3rem 5rem;
+  border-radius: 18px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
 export const ErrorLabel = styled.span`
@@ -43,7 +47,8 @@ export const Select = styled.select`
 `;
 
 export const BackButton = styled(Link)`
-  margin-top: 2em;
+  margin-top: 2rem;
   text-decoration: none;
   color: #7C9885;
 `;
+

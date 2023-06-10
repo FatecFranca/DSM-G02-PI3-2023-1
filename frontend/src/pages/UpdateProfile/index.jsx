@@ -4,7 +4,7 @@ import * as C from './styles';
 
 import useAuth from '../../hooks/useAuth';
 import Input from '../../components/Input';
-// import Button from '../../components/Button';
+import Header from '../../components/Header';
 
 function UpdateProfile() {
   const { updateProfile, user } = useAuth();
@@ -62,6 +62,7 @@ function UpdateProfile() {
 
   return (
     <C.RegisterContainer>
+      <Header />
       <C.Title>Atualizar Perfil</C.Title>
 
       <C.FormContainer>
@@ -111,9 +112,9 @@ function UpdateProfile() {
           />
         {/* </C.InputBox> */}
         <C.ErrorLabel>{erro}</C.ErrorLabel>
-        <C.ButtonContainer>
-          <C.Button onClick={handleUpdateProfile}>Atualizar</C.Button>
-        </C.ButtonContainer>
+        
+        <C.Button onClick={handleUpdateProfile}>Atualizar</C.Button>
+        
         <C.BackButton to="/">Voltar</C.BackButton>
       </C.FormContainer>
 
