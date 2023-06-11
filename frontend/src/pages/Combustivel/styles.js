@@ -10,7 +10,7 @@ export const RegisterContainer = styled.div`
 `;
 
 export const Title = styled.h2`
-  margin-top: 1.2rem;
+  margin-top: 1.8rem;
   margin-bottom: 1.8rem;
   color: #333;
 `;
@@ -54,17 +54,26 @@ export const ButtonContainer = styled.div`
 `;
 
 export const Button = styled.button`
-  width: 140px;
-  padding: 0.75rem;
-  background-color: #333;
+  width: 75%;
+  max-width: 360px;
+
+  background-color: #0e7511;
   color: #fff;
-  border: none;
-  border-radius: 4px;
+
+  font-weight: 600;
+  font-size: larger;
+
   cursor: pointer;
 
+  border: none;
+  border-radius: 6px;
+  margin: 2rem;
+  padding: 16px 18px;
+
   &:hover {
-    background-color: #0a53b2;
-  }
+    background-color: ${ props => props.fColor };
+    color: ${ props => props.bgColor };
+}
 `;
 
 export const LoginSpan = styled.span`

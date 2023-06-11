@@ -14,8 +14,8 @@ controller.create = async (req, res) => {
   controller.retrieveAll = async (req, res) => {
     try {
       const abastecimentos = await Abastecimento.find({});
-      const abastecimentoList = abastecimentos.map((abastecimento) => abastecimento.abastecimento);
-      res.status(200).json(abastecimentoList);
+      //const abastecimentoList = abastecimentos.map((abastecimento) => abastecimento.abastecimento);
+      res.status(200).json(abastecimentos);
     } catch (error) {
       res.status(500).json({ message: error.message });
     }

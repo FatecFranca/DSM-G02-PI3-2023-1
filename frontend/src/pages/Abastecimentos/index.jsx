@@ -29,7 +29,9 @@ function Abastecimentos() {
   }, [user, getAbastecimentos]);
 
   function mostrarCombustivel(id) {
-    return listaCom.find(c => c._id === id).tipo_combustivel.toUpperCase();
+    const combustivel = listaCom.find(c => c._id === id);
+    return combustivel ? combustivel.tipo_combustivel.toUpperCase() : '';
+    //return listaCom.find(c => c._id === id).tipo_combustivel.toUpperCase();
   }
 
   return (

@@ -24,7 +24,7 @@ function Usuario() {
 
     useEffect(() => {
     
-        if (user?.tipo === 'administrador') {
+        if (user?.tipo === 'administrador' || user?.tipo === 'frentista') {
           setAdm(user);
         } else {
           navigate('/');
@@ -51,19 +51,40 @@ function Usuario() {
             return;
         }
 
-        const res = await cadastrarUserInterno(tipo, nome, numerosCpf, email, senha);
+        if (user?.tipo === 'administrador') {
+            const res = await cadastrarUserInterno(tipo, nome, numerosCpf, email, senha);
 
-        if (!res?._id) {
-            setErro(res);
-            return;
-        } else {
-            alert('Usuario Cadastrado com sucesso!');
-            setNome('');
-            setEmail('');
-            setCpf('');
-            setSenha('');
-            setConfirmar('');
+            if (!res?._id) {
+                setErro(res);
+                return;
+            } else {
+                alert('Usuario Cadastrado com sucesso!');
+                setNome('');
+                setEmail('');
+                setCpf('');
+                setSenha('');
+                setConfirmar('');
+            }
+        }else{
+
+            tipo = 'usuario'
+
+            const res = await cadastrarUserInterno(tipo, nome, numerosCpf, email, senha);
+
+            if (!res?._id) {
+                setErro(res);
+                return;
+            } else {
+                alert('Usuario Cadastrado com sucesso!');
+                setNome('');
+                setEmail('');
+                setCpf('');
+                setSenha('');
+                setConfirmar('');
+            }
+
         }
+
 
     }
 
@@ -73,17 +94,19 @@ function Usuario() {
                 <C.Title>Cadastrar Usuário</C.Title>
     
                   <C.FormContainer>
-
-                    <select
-                        value={ tipo }
-                        onChange={ (e) => setTipo(e.target.value) }
-                        style={{ marginBottom: '20px' }}
-                    >
+                    
+                    {user?.tipo === 'administrador' ? (
+                        <C.Select
+                            value={ tipo }
+                            onChange={ (e) => setTipo(e.target.value) }
+                            style={{ marginBottom: '20px' }}
+                        >
                         <option value="">Selecione o tipo de usuário</option>
                         <option value="administrador">Administrador</option>
                         <option value="frentista">Frentista</option>
-                        <option value="usuário">Usuário</option>
-                    </select>
+                        <option value="usuario">Cliente</option>
+                    </C.Select>
+                    ) : null}
 
                     <Input
                         type='text'
@@ -119,7 +142,7 @@ function Usuario() {
                         value={ confirmar }
                         onChange={ e => [setConfirmar(e.target.value), setErro('')] }
                     />
-
+                    
                     <C.ErrorLabel>{ erro }</C.ErrorLabel>
             
                     <Button

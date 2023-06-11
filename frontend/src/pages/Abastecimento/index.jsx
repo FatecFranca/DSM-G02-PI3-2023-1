@@ -77,6 +77,7 @@ function Abastecimento() {
       alert('Abastecimento realizado com sucesso');
       setLitros('');
       setClienteCpf('');
+      setPontosGerados('');
     }
 
   }

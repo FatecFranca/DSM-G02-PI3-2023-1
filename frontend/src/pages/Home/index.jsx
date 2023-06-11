@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
-import { AiOutlineUser } from 'react-icons/ai';
+import { AiOutlineUser, AiOutlineTeam } from 'react-icons/ai';
 import { BsGeoAlt } from 'react-icons/bs';
 import { FaEnvelope } from 'react-icons/fa';
 import { TbFile, TbSocial } from 'react-icons/tb';
+import { MdShoppingCart } from 'react-icons/md';
+import { GiGasPump, GiFuelTank  } from 'react-icons/gi';
 import * as C from './styles';
 
 import useAuth from '../../hooks/useAuth';
@@ -34,7 +36,7 @@ function Home() {
             <Acesso
               Text="Abastecimento"
               to="/abastecimento"
-              Icon={TbFile}
+              Icon={ GiFuelTank }
               bgColor="#2C3E50"
             />
           ) : null}
@@ -42,7 +44,7 @@ function Home() {
             <Acesso
               Text="Cadastrar Produto"
               to="/produto"
-              Icon={TbFile}
+              Icon={MdShoppingCart}
               bgColor="#2C3E50"
             />
           ) : null}
@@ -51,7 +53,7 @@ function Home() {
             <Acesso
               Text='Cadastrar Combustível'
               to='/combustivel'
-              Icon={ TbFile }
+              Icon={ GiGasPump }
               bgColor='#2C3E50'
             />
           ) : null}
@@ -60,16 +62,34 @@ function Home() {
             <Acesso
               Text='Abastecimentos'
               to='/abastecimentos'
+              Icon={ GiFuelTank }
+              bgColor='#2C3E50'
+            />
+          ) : null}
+
+          {user?.tipo === 'usuario' ? (
+            <Acesso
+              Text='Resgatar Produtos'
+              to='/resgate-produto'
               Icon={ TbFile }
               bgColor='#2C3E50'
             />
           ) : null}
 
-          {user?.tipo === 'usuario' || user?.tipo === 'administrador' ? (
+          {user?.tipo === 'administrador' ? (
             <Acesso
-              Text='Resgatar Produtos'
-              to='/resgate-produto'
-              Icon={ TbFile }
+              Text='Cadastrar Usuários'
+              to='/usuario'
+              Icon={ AiOutlineTeam }
+              bgColor='#2C3E50'
+            />
+          ) : null}
+
+          {user?.tipo === 'frentista' ? (
+            <Acesso
+              Text='Cadastrar Clientes'
+              to='/usuario'
+              Icon={ AiOutlineTeam }
               bgColor='#2C3E50'
             />
           ) : null}
